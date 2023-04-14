@@ -49,6 +49,7 @@
 		70A4732129E8894400315611 /* SignType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A4732029E8894400315611 /* SignType.swift */; };
 		70A4732429E88C4300315611 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 70A4732329E88C4300315611 /* SPIndicator */; };
 		70A4732629E88E2100315611 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70A4732529E88E2100315611 /* GoogleService-Info.plist */; };
+		70F7168429E9DD9300351E76 /* SignViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F7168329E9DD9300351E76 /* SignViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		70A4731B29E8870800315611 /* SignViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignViewController.xib; sourceTree = "<group>"; };
 		70A4732029E8894400315611 /* SignType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignType.swift; sourceTree = "<group>"; };
 		70A4732529E88E2100315611 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		70F7168329E9DD9300351E76 /* SignViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		70A472BE29E87F6500315611 /* kufar-analogue */ = {
 			isa = PBXGroup;
 			children = (
+				70F7168229E9DD7200351E76 /* Delegates */,
 				70A4732529E88E2100315611 /* GoogleService-Info.plist */,
 				70A4731F29E8893F00315611 /* Enums */,
 				70A4731129E8837400315611 /* Extensions */,
@@ -200,6 +203,14 @@
 				70A4732029E8894400315611 /* SignType.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		70F7168229E9DD7200351E76 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				70F7168329E9DD9300351E76 /* SignViewControllerDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +327,7 @@
 				70A4731C29E8870800315611 /* SignViewController.swift in Sources */,
 				70A4731729E883A200315611 /* UserViewController.swift in Sources */,
 				70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */,
+				70F7168429E9DD9300351E76 /* SignViewControllerDelegate.swift in Sources */,
 				70A4731329E8838200315611 /* UIViewController.swift in Sources */,
 				70A4732129E8894400315611 /* SignType.swift in Sources */,
 				70A4730F29E8833200315611 /* MainTabBarController.swift in Sources */,

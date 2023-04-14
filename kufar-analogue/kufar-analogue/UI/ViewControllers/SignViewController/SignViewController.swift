@@ -17,8 +17,9 @@ class SignViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
-    
     private var signType: SignType = .signIn
+    
+    weak var delegate: SignViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class SignViewController: UIViewController {
         
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
-                SPIndicator.present(title: "ašibka", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
                 SPIndicator.present(title: "Password reset email sent", preset: .done, haptic: .success, from: .top)
             }
@@ -55,12 +56,11 @@ class SignViewController: UIViewController {
             SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
             return
         }
-        guard  let password = passwordTextField.text,!password.isEmpty else {
+        
+        guard let password = passwordTextField.text, !password.isEmpty else {
             SPIndicator.present(title: "Password is empty", preset: .error, haptic: .error, from: .top)
             return
         }
-              
-     //   else { return }
         
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -85,9 +85,15 @@ class SignViewController: UIViewController {
                 self.setInterface()
             }
         } else if signType == .signUp {
-            guard let email = emailTextField.text,
-                  let password = passwordTextField.text
-            else { return }
+            guard let email = emailTextField.text, !email.isEmpty else {
+                SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+                return
+            }
+            
+            guard let password = passwordTextField.text, !password.isEmpty else {
+                SPIndicator.present(title: "Password is empty", preset: .error, haptic: .error, from: .top)
+                return
+            }
             
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error {
