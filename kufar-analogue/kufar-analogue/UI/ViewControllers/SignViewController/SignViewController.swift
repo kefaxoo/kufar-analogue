@@ -36,14 +36,14 @@ class SignViewController: UIViewController {
     }
     
     @IBAction func forgetPasswordAction(_ sender: Any) {
-        guard let email = emailTextField.text else {
+        guard let email = emailTextField.text, !email.isEmpty else {
             SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
             return
         }
         
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
-                SPIndicator.present(title: "Error sending password reset email", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: "ašibka", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
                 SPIndicator.present(title: "Password reset email sent", preset: .done, haptic: .success, from: .top)
             }
@@ -51,9 +51,16 @@ class SignViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text
-        else { return }
+        guard let email = emailTextField.text, !email.isEmpty else {
+            SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+            return
+        }
+        guard  let password = passwordTextField.text,!password.isEmpty else {
+            SPIndicator.present(title: "Password is empty", preset: .error, haptic: .error, from: .top)
+            return
+        }
+              
+     //   else { return }
         
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
