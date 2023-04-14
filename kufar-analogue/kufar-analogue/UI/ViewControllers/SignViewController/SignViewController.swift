@@ -17,8 +17,9 @@ class SignViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
-    
     private var signType: SignType = .signIn
+    
+    weak var delegate: SignViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,35 +37,44 @@ class SignViewController: UIViewController {
     }
     
     @IBAction func forgetPasswordAction(_ sender: Any) {
-        guard let email = emailTextField.text else { return }
+        guard let email = emailTextField.text, !email.isEmpty else {
+            SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+            return
+        }
         
         Auth.auth().sendPasswordReset(withEmail: email) { error in
-          if let error = error {
-              SPIndicator.present(title: "Error sending password reset email", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
-          } else {
-              SPIndicator.present(title: "Password reset email sent", preset: .done, haptic: .success, from: .top)
-          }
+            if let error = error {
+                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+            } else {
+                SPIndicator.present(title: "Password reset email sent", preset: .done, haptic: .success, from: .top)
+            }
         }
     }
     
     @IBAction func signInAction(_ sender: Any) {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text
-        else { return }
+        guard let email = emailTextField.text, !email.isEmpty else {
+            SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+            return
+        }
+        
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            SPIndicator.present(title: "Password is empty", preset: .error, haptic: .error, from: .top)
+            return
+        }
         
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 SPIndicator.present(title: "Error signing in", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
-              } else {
-                  if let user = Auth.auth().currentUser {
-                      if user.isEmailVerified {
-                          SPIndicator.present(title: "Success login", preset: .done, haptic: .success, from: .top)
-                          self.dismiss(animated: true)
-                      } else {
-                          SPIndicator.present(title: "Verify email", preset: .error, haptic: .error, from: .top)
-                      }
-                  }
-              }
+            } else {
+                if let user = Auth.auth().currentUser {
+                    if user.isEmailVerified {
+                        SPIndicator.present(title: "Success login", preset: .done, haptic: .success, from: .top)
+                        self.dismiss(animated: true)
+                    } else {
+                        SPIndicator.present(title: "Verify email", preset: .error, haptic: .error, from: .top)
+                    }
+                }
+            }
         }
     }
     
@@ -75,9 +85,15 @@ class SignViewController: UIViewController {
                 self.setInterface()
             }
         } else if signType == .signUp {
-            guard let email = emailTextField.text,
-                  let password = passwordTextField.text
-            else { return }
+            guard let email = emailTextField.text, !email.isEmpty else {
+                SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+                return
+            }
+            
+            guard let password = passwordTextField.text, !password.isEmpty else {
+                SPIndicator.present(title: "Password is empty", preset: .error, haptic: .error, from: .top)
+                return
+            }
             
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error {
