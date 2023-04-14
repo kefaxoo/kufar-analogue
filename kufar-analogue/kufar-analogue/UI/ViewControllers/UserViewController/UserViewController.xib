@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserViewController" customModule="kufar_analogue" customModuleProvider="target">
             <connections>
+                <outlet property="emptyProfileLabel" destination="6qs-Ha-bg5" id="PgT-YT-JwI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,19 +19,20 @@
             <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iIt-H1-fFX">
-                    <rect key="frame" x="16" y="75" width="398" height="807"/>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, create or login in your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qs-Ha-bg5">
+                    <rect key="frame" x="13" y="464.66666666666669" width="404" height="27.666666666666686"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="iIt-H1-fFX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="Juj-1T-MYO"/>
-                <constraint firstItem="iIt-H1-fFX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="PMf-yC-4sz"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iIt-H1-fFX" secondAttribute="trailing" constant="16" id="gsU-Ik-5C9"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iIt-H1-fFX" secondAttribute="bottom" constant="16" id="ksa-kh-Q7b"/>
+                <constraint firstItem="6qs-Ha-bg5" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="48i-an-Fmz"/>
+                <constraint firstItem="6qs-Ha-bg5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="CXi-HS-kDt"/>
             </constraints>
-            <point key="canvasLocation" x="108" y="21"/>
+            <point key="canvasLocation" x="107.44186046511628" y="20.600858369098713"/>
         </view>
     </objects>
     <resources>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7016B84B29E9E4730083AC08 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7016B84929E9E4730083AC08 /* UserSettingsViewController.swift */; };
+		7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7016B84A29E9E4730083AC08 /* UserSettingsViewController.xib */; };
 		70A472C029E87F6500315611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472BF29E87F6500315611 /* AppDelegate.swift */; };
 		70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472C129E87F6500315611 /* SceneDelegate.swift */; };
 		70A472C729E87F6500315611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A472C529E87F6500315611 /* Main.storyboard */; };
@@ -49,10 +51,12 @@
 		70A4732129E8894400315611 /* SignType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A4732029E8894400315611 /* SignType.swift */; };
 		70A4732429E88C4300315611 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 70A4732329E88C4300315611 /* SPIndicator */; };
 		70A4732629E88E2100315611 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70A4732529E88E2100315611 /* GoogleService-Info.plist */; };
-		70F7168429E9DD9300351E76 /* SignViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F7168329E9DD9300351E76 /* SignViewControllerDelegate.swift */; };
+		70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7016B84929E9E4730083AC08 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		7016B84A29E9E4730083AC08 /* UserSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSettingsViewController.xib; sourceTree = "<group>"; };
 		70A472BC29E87F6500315611 /* kufar-analogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kufar-analogue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A472BF29E87F6500315611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70A472C129E87F6500315611 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +72,7 @@
 		70A4731B29E8870800315611 /* SignViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignViewController.xib; sourceTree = "<group>"; };
 		70A4732029E8894400315611 /* SignType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignType.swift; sourceTree = "<group>"; };
 		70A4732529E88E2100315611 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		70F7168329E9DD9300351E76 /* SignViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewControllerDelegate.swift; sourceTree = "<group>"; };
+		70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7016B84829E9E45E0083AC08 /* UserSettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7016B84929E9E4730083AC08 /* UserSettingsViewController.swift */,
+				7016B84A29E9E4730083AC08 /* UserSettingsViewController.xib */,
+			);
+			path = UserSettingsViewController;
+			sourceTree = "<group>";
+		};
 		70A472B329E87F6500315611 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +186,7 @@
 		70A4731429E8839300315611 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7016B84829E9E45E0083AC08 /* UserSettingsViewController */,
 				70A4731929E886F700315611 /* UserViewController */,
 				70A4731E29E8871700315611 /* SignViewController */,
 			);
@@ -208,7 +222,7 @@
 		70F7168229E9DD7200351E76 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				70F7168329E9DD9300351E76 /* SignViewControllerDelegate.swift */,
+				70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -310,6 +324,7 @@
 				70A472CC29E87F6600315611 /* LaunchScreen.storyboard in Resources */,
 				70A4731D29E8870800315611 /* SignViewController.xib in Resources */,
 				70A4731829E883A200315611 /* UserViewController.xib in Resources */,
+				7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */,
 				70A472C929E87F6600315611 /* Assets.xcassets in Resources */,
 				70A472C729E87F6500315611 /* Main.storyboard in Resources */,
 				70A4732629E88E2100315611 /* GoogleService-Info.plist in Resources */,
@@ -327,7 +342,8 @@
 				70A4731C29E8870800315611 /* SignViewController.swift in Sources */,
 				70A4731729E883A200315611 /* UserViewController.swift in Sources */,
 				70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */,
-				70F7168429E9DD9300351E76 /* SignViewControllerDelegate.swift in Sources */,
+				7016B84B29E9E4730083AC08 /* UserSettingsViewController.swift in Sources */,
+				70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */,
 				70A4731329E8838200315611 /* UIViewController.swift in Sources */,
 				70A4732129E8894400315611 /* SignType.swift in Sources */,
 				70A4730F29E8833200315611 /* MainTabBarController.swift in Sources */,

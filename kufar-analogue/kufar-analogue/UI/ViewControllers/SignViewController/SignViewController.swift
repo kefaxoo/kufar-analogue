@@ -19,7 +19,7 @@ class SignViewController: UIViewController {
     
     private var signType: SignType = .signIn
     
-    weak var delegate: SignViewControllerDelegate?
+    weak var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +69,10 @@ class SignViewController: UIViewController {
                 if let user = Auth.auth().currentUser {
                     if user.isEmailVerified {
                         SPIndicator.present(title: "Success login", preset: .done, haptic: .success, from: .top)
+                        if let delegate = self.delegate {
+                            delegate.refreshVC()
+                        }
+                        
                         self.dismiss(animated: true)
                     } else {
                         SPIndicator.present(title: "Verify email", preset: .error, haptic: .error, from: .top)
