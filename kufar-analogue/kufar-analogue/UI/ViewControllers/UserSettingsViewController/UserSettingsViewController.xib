@@ -76,19 +76,17 @@
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktE-gW-WM0">
-                            <rect key="frame" x="0.0" y="228" width="361" height="456"/>
+                            <rect key="frame" x="0.0" y="228.00000000000003" width="361" height="456.66666666666674"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DB1-Xe-Zkh">
-                            <rect key="frame" x="0.0" y="692" width="361" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="35" id="bTp-mW-ssc"/>
-                            </constraints>
-                            <color key="tintColor" systemColor="systemPurpleColor"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMX-lJ-SMz">
+                            <rect key="frame" x="0.0" y="692.66666666666663" width="361" height="34.333333333333371"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Save changes"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Save changes">
+                                <color key="baseBackgroundColor" systemColor="systemPurpleColor"/>
+                            </buttonConfiguration>
                             <connections>
-                                <action selector="saveChangesAction:" destination="-1" eventType="touchUpInside" id="7bg-Iu-LZ2"/>
+                                <action selector="saveChangesAction:" destination="-1" eventType="touchUpInside" id="PIZ-al-Hm0"/>
                             </connections>
                         </button>
                     </subviews>

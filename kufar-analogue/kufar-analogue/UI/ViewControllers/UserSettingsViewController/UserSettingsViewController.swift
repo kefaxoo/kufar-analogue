@@ -7,9 +7,10 @@
 
 import UIKit
 import FirebaseAuth
+import SPIndicator
 
 class UserSettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -29,6 +30,8 @@ class UserSettingsViewController: UIViewController {
         } else {
             // TODO: handle error with the help of SPIndicator
             // and dismiss
+            SPIndicator.present(title: "Please login🥹",message: "Log in to change your profile", preset: .error, haptic: .error, from: .top)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -39,40 +42,50 @@ class UserSettingsViewController: UIViewController {
         else { return }
         
         let alertVC = UIAlertController(title: "Save changes?", message: "Are you sure to make changes?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "ХЛЭБ", style: .default) { _ in
-            if var user = Auth.auth().currentUser {
-                let changeProfireRequest = user.createProfileChangeRequest()
-                changeProfireRequest.displayName = name
-                if let emailDB = user.email,
-                   emailDB != email {
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            if let user = Auth.auth().currentUser {
+                let changeProfileRequest = user.createProfileChangeRequest()
+                changeProfileRequest.displayName = name
+                if let emailDb = user.email,
+                   emailDb != email {
                     user.updateEmail(to: email) { error in
                         if let error {
-                            // TODO: handle error (SPIndicator)
+                            SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                         } else {
-                            // TODO: handle verify notification
+                            SPIndicator.present(title: "Success", message: "Please check your email for confirm new email", preset: .done, haptic: .success, from: .top)
                         }
+                        
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
                 
                 if password.count > 5 {
                     user.updatePassword(to: password)
+                } else {
+                    SPIndicator.present(title: "Error", message: "Password has less than 6 symbols", preset: .error, haptic: .error, from: .top)
+                    self.navigationController?.popViewController(animated: true)
+                    return
                 }
                 
-                changeProfireRequest.commitChanges { error in
-                    // TODO: the same as 55-59 but in else block we sent notification, that all is goooood in any way dismiss
+                changeProfileRequest.commitChanges { error in
+                    if let error {
+                        SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                    } else {
+                        SPIndicator.present(title: "Success", message: "Please check your email for confirm new email", preset: .done, haptic: .success, from: .top)
+                    }
+                    
+                    self.navigationController?.popViewController(animated: true)
                 }
-            } else {
-                // TODO: handle error with the help of SPIndicator
-                // and dismiss
             }
         }
         
         alertVC.addAction(yesAction)
-        let noAction = UIAlertAction(title: "МАТЧА", style: .destructive) { _ in
-            self.dismiss(animated: true)
+        let noAction = UIAlertAction(title: "NO", style: .destructive) { _ in
+            self.navigationController?.popViewController(animated: true)
         }
         
         alertVC.addAction(noAction)
         self.present(alertVC, animated: true)
     }
 }
+
