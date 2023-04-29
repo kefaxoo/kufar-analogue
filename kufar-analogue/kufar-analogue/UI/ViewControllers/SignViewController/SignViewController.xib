@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="emailTextField" destination="WJk-BH-Ye1" id="kUW-Ic-X4c"/>
                 <outlet property="forgetPasswordButton" destination="CFj-4I-RvG" id="bzp-f1-HEA"/>
+                <outlet property="inputBottomConstraint" destination="ccl-6m-FMW" id="ElA-6L-RiZ"/>
                 <outlet property="passwordTextField" destination="L2e-LT-Kse" id="FlH-n2-ZeW"/>
                 <outlet property="signInButton" destination="fsZ-Dm-a4b" id="9JX-Ta-OeV"/>
                 <outlet property="signUpButton" destination="p9x-ea-mhk" id="H7G-1r-CIB"/>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8TY-Yr-Du3">
-                    <rect key="frame" x="16" y="671" width="398" height="211"/>
+                    <rect key="frame" x="16" y="705" width="398" height="211"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-BH-Ye1">
                             <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
@@ -66,10 +67,10 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0w-Jg-QeP">
-                    <rect key="frame" x="16" y="75" width="398" height="580"/>
+                    <rect key="frame" x="16" y="16" width="398" height="673"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kufar-analogue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtk-l6-3jb">
-                            <rect key="frame" x="89.666666666666671" y="272" width="218.66666666666663" height="36"/>
+                            <rect key="frame" x="89.666666666666671" y="318.66666666666669" width="218.66666666666663" height="36"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

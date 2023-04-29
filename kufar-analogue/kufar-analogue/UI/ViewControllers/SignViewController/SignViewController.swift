@@ -16,6 +16,7 @@ class SignViewController: UIViewController {
     @IBOutlet weak var forgetPasswordButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
     
     private var signType: SignType = .signIn
     
@@ -24,6 +25,57 @@ class SignViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setInterface()
+        setObservers()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+    }
+    
+    @objc private func dismissKeyboard(_ sender: Any) {
+        self.view.endEditing(true)
+    }
+    
+    private func setObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if emailTextField.isEditing || passwordTextField.isEditing {
+            moveViewWithKeyboard(notification: notification, viewBottomConstraint: inputBottomConstraint, keyboardWillShow: true)
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        moveViewWithKeyboard(notification: notification, viewBottomConstraint: inputBottomConstraint, keyboardWillShow: false)
+    }
+    
+    func moveViewWithKeyboard(notification: NSNotification, viewBottomConstraint: NSLayoutConstraint, keyboardWillShow: Bool) {
+        // Keyboard's size
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let keyboardHeight = keyboardSize.height
+        
+        // Keyboard's animation duration
+        let keyboardDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        
+        // Keyboard's animation curve
+        let keyboardCurve = UIView.AnimationCurve(rawValue: notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! Int)!
+        
+        // Change the constant
+        if keyboardWillShow {
+            let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0) // Check if safe area exists
+            let bottomConstant: CGFloat = 20
+            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : bottomConstant)
+        }else {
+            viewBottomConstraint.constant = 20
+        }
+        
+        // Animate the view the same way the keyboard animates
+        let animator = UIViewPropertyAnimator(duration: keyboardDuration, curve: keyboardCurve) { [weak self] in
+            // Update Constraints
+            self?.view.layoutIfNeeded()
+        }
+        
+        // Perform the animation
+        animator.startAnimation()
     }
     
     private func setInterface() {
@@ -120,5 +172,4 @@ class SignViewController: UIViewController {
             }
         }
     }
-    
 }
