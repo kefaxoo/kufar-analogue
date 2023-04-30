@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainTabBarController: UITabBarController {
     
@@ -17,11 +18,10 @@ class MainTabBarController: UITabBarController {
     private func configureTabBar() {
         let userVC = UserViewController(nibName: UserViewController.id, bundle: nil)
         userVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 1000)
-        
         let addVC = AddViewController(nibName: AddViewController.id, bundle: nil)
         addVC.tabBarItem = UITabBarItem(title: "Add", image: UIImage(systemName: "plus.app.fill"), tag: 1001)
+        self.viewControllers = [userVC.configureNavigationController(title: "Profile"), addVC.configureNavigationController(title: "Add post")]
         
-        self.viewControllers = [userVC.configureNavigationController(title: "Profile"), addVC.configureNavigationController(title: "Add")]
         self.tabBar.tintColor = UIColor.systemPurple
     }
 }

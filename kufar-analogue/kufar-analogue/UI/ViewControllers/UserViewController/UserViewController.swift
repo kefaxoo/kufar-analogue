@@ -8,11 +8,11 @@
 import UIKit
 import FirebaseAuth
 import SPIndicator
-import FirebaseFirestore
 
 class UserViewController: UIViewController {
 
     @IBOutlet weak var emptyProfileLabel: UILabel!
+    @IBOutlet weak var postsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

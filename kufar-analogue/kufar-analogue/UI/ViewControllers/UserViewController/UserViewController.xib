@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserViewController" customModule="kufar_analogue" customModuleProvider="target">
             <connections>
                 <outlet property="emptyProfileLabel" destination="6qs-Ha-bg5" id="PgT-YT-JwI"/>
+                <outlet property="postsTableView" destination="hGQ-pr-mQ1" id="4IX-VA-Gcc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,12 +26,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hGQ-pr-mQ1">
+                    <rect key="frame" x="0.0" y="59" width="430" height="839"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="6qs-Ha-bg5" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="48i-an-Fmz"/>
                 <constraint firstItem="6qs-Ha-bg5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="CXi-HS-kDt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hGQ-pr-mQ1" secondAttribute="bottom" id="aMh-9X-vfw"/>
+                <constraint firstItem="hGQ-pr-mQ1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bsO-rr-gOb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hGQ-pr-mQ1" secondAttribute="trailing" id="edf-cL-9dZ"/>
+                <constraint firstItem="hGQ-pr-mQ1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pKU-O7-wPj"/>
             </constraints>
             <point key="canvasLocation" x="107.44186046511628" y="20.600858369098713"/>
         </view>

@@ -85,38 +85,20 @@ class AddViewController: UIViewController {
         }
         
         var description = ""
-        if var descriptionText = descriptionTextView.text {
+        if let descriptionText = descriptionTextView.text, !descriptionText.isEmpty {
             description = descriptionText
+            if let photo = self.photo {
+                uploadPhoto(name: name, email: email, description: description, phoneNumber: phoneNumber)
+            } else {
+                self.addPostWithoutPhoto(email: email, description: description, name: name, phoneNumber: phoneNumber)
+            }
         } else {
             let alertVC = UIAlertController(title: "Description is empty", message: "Do you want to create post without description?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
                 if let photo = self.photo {
-                    let storage = Storage.storage()
-                    let storageRef = storage.reference()
-                    let photoRef = storageRef.child("images/\(name).png")
-                    guard let photoData = photo.pngData() else {
-                        // TODO: Display indicator
-                        return
-                    }
-                    
-                    let uploadTask = photoRef.putData(photoData) { metadata, error in
-                        if error != nil {
-                            // TODO: Display indicator
-                        } else {
-                            self.addPost(email: email, description: description, name: name, phoneNumber: phoneNumber)
-                        }
-                    }
+                    self.uploadPhoto(name: name, email: email, phoneNumber: phoneNumber)
                 } else {
-                    let alertVC = UIAlertController(title: "There is no photo", message: "Do you want to create post without photo?", preferredStyle: .alert)
-                    
-                    let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
-                        self.addPost(email: email, description: description, name: name, phoneNumber: phoneNumber, isPhotoUploaded: false)
-                    }
-                    
-                    let noAction = UIAlertAction(title: "No", style: .cancel)
-                    alertVC.addAction(yesAction)
-                    alertVC.addAction(noAction)
-                    self.present(alertVC, animated: true)
+                    self.addPostWithoutPhoto(email: email, name: name, phoneNumber: phoneNumber)
                 }
             }
             let noAction = UIAlertAction(title: "No", style: .cancel)
@@ -127,13 +109,46 @@ class AddViewController: UIViewController {
         }
     }
     
-    private func addPost(email: String, description: String, name: String, phoneNumber: String, isPhotoUploaded: Bool = true) {
+    private func addPostWithoutPhoto(email: String, description: String = "", name: String, phoneNumber: String) {
+        let alertVC = UIAlertController(title: "There is no photo", message: "Do you want to create post without photo?", preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            self.addPost(email: email, description: description, name: name, phoneNumber: phoneNumber, isPhotoUploaded: false)
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel)
+        alertVC.addAction(yesAction)
+        alertVC.addAction(noAction)
+        self.present(alertVC, animated: true)
+    }
+    
+    private func uploadPhoto(name: String, email: String, description: String = "", phoneNumber: String) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let photoRef = storageRef.child("images/\(name).png")
+        guard let photo,
+              let photoData = photo.pngData()
+        else {
+            // TODO: Display indicator
+            return
+        }
+        
+        let uploadTask = photoRef.putData(photoData) { metadata, error in
+            if error != nil {
+                // TODO: Display indicator
+            } else {
+                self.addPost(email: email, description: description, name: name, phoneNumber: phoneNumber)
+            }
+        }
+    }
+    
+    private func addPost(email: String, description: String = "", name: String, phoneNumber: String, isPhotoUploaded: Bool = true) {
         let db = Firestore.firestore()
-        let id = isPhotoUploaded ? "\(email)-\(name).png".toUnixFilename : ""
+        let id = "\(email)-\(name)"
         db.collection("posts").document(id).setData([
             "creatorEmail": email,
             "description": description,
-            "imageUrl": "images/\(id).png",
+            "imageUrl": isPhotoUploaded ? "images/\(id).png" : "",
             "name": name,
             "phoneNumber": phoneNumber
         ]) { error in
