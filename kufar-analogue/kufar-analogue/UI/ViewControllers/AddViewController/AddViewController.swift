@@ -64,23 +64,28 @@ class AddViewController: UIViewController {
     @IBAction func addPostAction(_ sender: Any) {
         guard let user = Auth.auth().currentUser else {
             // TODO: Display indicator when user not exist
+            SPIndicator.present(title: "Error", message: "User not exist🥲", haptic:.error , from:.top)
             return
         }
         
-        var id = ""
+       
         guard let email = user.email else {
             // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "User does`n email🥲", haptic:.error , from:.top)
             return
         }
         
-        id = email
         guard let name = nameTextField.text else {
             // TODO: Display indicator (название объявления)
+            SPIndicator.present(title: "Error", message: "Write name post💅", haptic:.error , from:.top)
+
             return
         }
         
         guard let phoneNumber = phoneTextField.text else {
             // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Write phone number💅", haptic:.error , from:.top)
+
             return
         }
         
@@ -101,7 +106,7 @@ class AddViewController: UIViewController {
                     self.addPostWithoutPhoto(email: email, name: name, phoneNumber: phoneNumber)
                 }
             }
-            let noAction = UIAlertAction(title: "No", style: .cancel)
+            let noAction = UIAlertAction(title: "No", style: .destructive)
             
             alertVC.addAction(yesAction)
             alertVC.addAction(noAction)
@@ -130,12 +135,16 @@ class AddViewController: UIViewController {
               let photoData = photo.pngData()
         else {
             // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "photo error💅", haptic:.error , from:.top)
+
             return
         }
         
         let uploadTask = photoRef.putData(photoData) { metadata, error in
-            if error != nil {
+            if let error {
                 // TODO: Display indicator
+                SPIndicator.present(title: "Error", message: error.localizedDescription, haptic:.error , from:.top)
+
             } else {
                 self.addPost(email: email, description: description, name: name, phoneNumber: phoneNumber)
             }
@@ -152,8 +161,10 @@ class AddViewController: UIViewController {
             "name": name,
             "phoneNumber": phoneNumber
         ]) { error in
-            if error != nil {
+            if let error {
                 // TODO: Display error indicator
+                SPIndicator.present(title: "Error", message: error.localizedDescription, haptic:.error , from:.top)
+                
             } else {
                 SPIndicator.present(title: "Success", message: "Post successfully created", preset: .done, haptic: .success, from: .top)
             }
