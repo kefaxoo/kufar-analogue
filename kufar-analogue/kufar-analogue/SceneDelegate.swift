@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
-        window?.rootViewController = MainTabBarController(nibName: nil, bundle: nil)
+        window?.rootViewController = SignViewController(nibName: SignViewController.id, bundle: nil).configureNavigationController()
         window?.makeKeyAndVisible()
     }
 

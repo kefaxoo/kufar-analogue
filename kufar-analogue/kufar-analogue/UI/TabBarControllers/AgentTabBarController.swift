@@ -1,5 +1,5 @@
 //
-//  MainTabBarController.swift
+//  AgentTabBarController.swift
 //  kufar-analogue
 //
 //  Created by Bahdan Piatrouski on 13.04.23.
@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class MainTabBarController: UITabBarController {
+class AgentTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

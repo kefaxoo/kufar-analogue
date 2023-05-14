@@ -17,6 +17,7 @@ class SignViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loadingView: UIView!
     
     private var signType: SignType = .signIn
     
@@ -27,6 +28,26 @@ class SignViewController: UIViewController {
         setInterface()
         setObservers()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if signType == .signUp {
+            self.navigationController?.navigationBar.backItem?.title = "Sign in"
+        } else {
+            self.navigationItem.title = nil
+        }
+        
+        if Auth.auth().currentUser != nil {
+            let agentTabBarController = AgentTabBarController(nibName: nil, bundle: nil)
+            agentTabBarController.modalPresentationStyle = .fullScreen
+            self.present(agentTabBarController, animated: false)
+        } else {
+            loadingView.isHidden = true
+        }
+    }
+    
+    func set(_ type: SignType) {
+        self.signType = type
     }
     
     @objc private func dismissKeyboard(_ sender: Any) {
@@ -79,6 +100,7 @@ class SignViewController: UIViewController {
     }
     
     private func setInterface() {
+        self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
         if signType == .signIn {
             forgetPasswordButton.isHidden = false
             signInButton.isHidden = false
@@ -103,6 +125,13 @@ class SignViewController: UIViewController {
         }
     }
     
+    @IBAction func signInAsGuestAction(_ sender: Any) {
+        let userVC = UserViewController(nibName: UserViewController.id, bundle: nil)
+        userVC.set(.user)
+        userVC.modalPresentationStyle = .fullScreen
+        self.present(userVC, animated: false)
+    }
+    
     @IBAction func signInAction(_ sender: Any) {
         guard let email = emailTextField.text, !email.isEmpty else {
             SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
@@ -120,12 +149,9 @@ class SignViewController: UIViewController {
             } else {
                 if let user = Auth.auth().currentUser {
                     if user.isEmailVerified {
-                        SPIndicator.present(title: "Success login", preset: .done, haptic: .success, from: .top)
-                        if let delegate = self.delegate {
-                            delegate.refreshVC()
-                        }
-                        
-                        self.dismiss(animated: true)
+                        let agentTabBarController = AgentTabBarController(nibName: nil, bundle: nil)
+                        agentTabBarController.modalPresentationStyle = .fullScreen
+                        self.present(agentTabBarController, animated: false)
                     } else {
                         SPIndicator.present(title: "Verify email", preset: .error, haptic: .error, from: .top)
                     }
@@ -136,10 +162,9 @@ class SignViewController: UIViewController {
     
     @IBAction func signUpAction(_ sender: Any) {
         if signType == .signIn {
-            signType = .signUp
-            UIView.animate(withDuration: 1) {
-                self.setInterface()
-            }
+            let signVC = SignViewController(nibName: SignViewController.id, bundle: nil)
+            signVC.set(.signUp)
+            self.navigationController?.pushViewController(signVC, animated: true)
         } else if signType == .signUp {
             guard let email = emailTextField.text, !email.isEmpty else {
                 SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)

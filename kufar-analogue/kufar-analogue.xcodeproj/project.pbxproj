@@ -11,6 +11,15 @@
 		7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7016B84A29E9E4730083AC08 /* UserSettingsViewController.xib */; };
 		7028306529EF13370039221E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028306329EF13370039221E /* AddViewController.swift */; };
 		7028306629EF13370039221E /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7028306429EF13370039221E /* AddViewController.xib */; };
+		706988502A116F7500695ED5 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7069884E2A116F7500695ED5 /* PostTableViewCell.swift */; };
+		706988512A116F7500695ED5 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7069884F2A116F7500695ED5 /* PostTableViewCell.xib */; };
+		706988582A11707700695ED5 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706988572A11707700695ED5 /* PostModel.swift */; };
+		7069885A2A11733100695ED5 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706988592A11733100695ED5 /* UITableView.swift */; };
+		7069885C2A11737E00695ED5 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7069885B2A11737E00695ED5 /* UITableViewCell.swift */; };
+		7069885F2A11754000695ED5 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 7069885E2A11754000695ED5 /* ObjectMapper */; };
+		707E64E42A117CB50038CA7F /* PostControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E32A117CB50038CA7F /* PostControllerType.swift */; };
+		707E64E62A117EAD0038CA7F /* TypesForPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E52A117EAD0038CA7F /* TypesForPost.swift */; };
+		707E64E82A11808C0038CA7F /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E72A11808C0038CA7F /* UserType.swift */; };
 		70A472C029E87F6500315611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472BF29E87F6500315611 /* AppDelegate.swift */; };
 		70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472C129E87F6500315611 /* SceneDelegate.swift */; };
 		70A472C729E87F6500315611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A472C529E87F6500315611 /* Main.storyboard */; };
@@ -44,7 +53,7 @@
 		70A4730729E8804000315611 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 70A4730629E8804000315611 /* FirebaseStorage */; };
 		70A4730929E8804000315611 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 70A4730829E8804000315611 /* FirebaseStorageCombine-Community */; };
 		70A4730C29E8808500315611 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 70A4730B29E8808500315611 /* SDWebImage */; };
-		70A4730F29E8833200315611 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A4730E29E8833200315611 /* MainTabBarController.swift */; };
+		70A4730F29E8833200315611 /* AgentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A4730E29E8833200315611 /* AgentTabBarController.swift */; };
 		70A4731329E8838200315611 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A4731229E8838200315611 /* UIViewController.swift */; };
 		70A4731729E883A200315611 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A4731529E883A200315611 /* UserViewController.swift */; };
 		70A4731829E883A200315611 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A4731629E883A200315611 /* UserViewController.xib */; };
@@ -63,6 +72,14 @@
 		7016B84A29E9E4730083AC08 /* UserSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSettingsViewController.xib; sourceTree = "<group>"; };
 		7028306329EF13370039221E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		7028306429EF13370039221E /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		7069884E2A116F7500695ED5 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		7069884F2A116F7500695ED5 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		706988572A11707700695ED5 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		706988592A11733100695ED5 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		7069885B2A11737E00695ED5 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		707E64E32A117CB50038CA7F /* PostControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostControllerType.swift; sourceTree = "<group>"; };
+		707E64E52A117EAD0038CA7F /* TypesForPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesForPost.swift; sourceTree = "<group>"; };
+		707E64E72A11808C0038CA7F /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		70A472BC29E87F6500315611 /* kufar-analogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kufar-analogue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A472BF29E87F6500315611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70A472C129E87F6500315611 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +87,7 @@
 		70A472C829E87F6600315611 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70A472CB29E87F6600315611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70A472CD29E87F6600315611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		70A4730E29E8833200315611 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		70A4730E29E8833200315611 /* AgentTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTabBarController.swift; sourceTree = "<group>"; };
 		70A4731229E8838200315611 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		70A4731529E883A200315611 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		70A4731629E883A200315611 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
@@ -94,6 +111,7 @@
 				70A472D929E8804000315611 /* FirebaseAnalyticsSwift in Frameworks */,
 				70A472D529E8804000315611 /* FirebaseAnalytics in Frameworks */,
 				70A472D729E8804000315611 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				7069885F2A11754000695ED5 /* ObjectMapper in Frameworks */,
 				70A472FD29E8804000315611 /* FirebaseMLModelDownloader in Frameworks */,
 				70A472F129E8804000315611 /* FirebaseFirestoreSwift in Frameworks */,
 				70A472DD29E8804000315611 /* FirebaseAppCheck in Frameworks */,
@@ -141,6 +159,39 @@
 			path = AddViewController;
 			sourceTree = "<group>";
 		};
+		7069884B2A116F5600695ED5 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				706988522A116F7900695ED5 /* PostTableViewCell */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		706988522A116F7900695ED5 /* PostTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7069884E2A116F7500695ED5 /* PostTableViewCell.swift */,
+				7069884F2A116F7500695ED5 /* PostTableViewCell.xib */,
+			);
+			path = PostTableViewCell;
+			sourceTree = "<group>";
+		};
+		706988552A11706C00695ED5 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				706988562A11707200695ED5 /* Models */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		706988562A11707200695ED5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				706988572A11707700695ED5 /* PostModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		70A472B329E87F6500315611 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +211,7 @@
 		70A472BE29E87F6500315611 /* kufar-analogue */ = {
 			isa = PBXGroup;
 			children = (
+				706988552A11706C00695ED5 /* Firebase */,
 				70F7168229E9DD7200351E76 /* Delegates */,
 				70A4732529E88E2100315611 /* GoogleService-Info.plist */,
 				70A4731F29E8893F00315611 /* Enums */,
@@ -179,6 +231,7 @@
 		70A4730D29E8814300315611 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7069884B2A116F5600695ED5 /* TableViewCells */,
 				70A4731429E8839300315611 /* ViewControllers */,
 				70A4731029E8833600315611 /* TabBarControllers */,
 			);
@@ -188,7 +241,7 @@
 		70A4731029E8833600315611 /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
-				70A4730E29E8833200315611 /* MainTabBarController.swift */,
+				70A4730E29E8833200315611 /* AgentTabBarController.swift */,
 			);
 			path = TabBarControllers;
 			sourceTree = "<group>";
@@ -198,6 +251,8 @@
 			children = (
 				70A4731229E8838200315611 /* UIViewController.swift */,
 				70D4570629FD718E0014C3A0 /* String.swift */,
+				706988592A11733100695ED5 /* UITableView.swift */,
+				7069885B2A11737E00695ED5 /* UITableViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -235,6 +290,9 @@
 			isa = PBXGroup;
 			children = (
 				70A4732029E8894400315611 /* SignType.swift */,
+				707E64E32A117CB50038CA7F /* PostControllerType.swift */,
+				707E64E52A117EAD0038CA7F /* TypesForPost.swift */,
+				707E64E72A11808C0038CA7F /* UserType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -293,6 +351,7 @@
 				70A4730829E8804000315611 /* FirebaseStorageCombine-Community */,
 				70A4730B29E8808500315611 /* SDWebImage */,
 				70A4732329E88C4300315611 /* SPIndicator */,
+				7069885E2A11754000695ED5 /* ObjectMapper */,
 			);
 			productName = "kufar-analogue";
 			productReference = 70A472BC29E87F6500315611 /* kufar-analogue.app */;
@@ -326,6 +385,7 @@
 				70A472D329E8804000315611 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				70A4730A29E8808500315611 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				70A4732229E88C4300315611 /* XCRemoteSwiftPackageReference "SPIndicator" */,
+				7069885D2A11754000695ED5 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 			);
 			productRefGroup = 70A472BD29E87F6500315611 /* Products */;
 			projectDirPath = "";
@@ -344,6 +404,7 @@
 				70A472CC29E87F6600315611 /* LaunchScreen.storyboard in Resources */,
 				70A4731D29E8870800315611 /* SignViewController.xib in Resources */,
 				70A4731829E883A200315611 /* UserViewController.xib in Resources */,
+				706988512A116F7500695ED5 /* PostTableViewCell.xib in Resources */,
 				7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */,
 				70A472C929E87F6600315611 /* Assets.xcassets in Resources */,
 				70A472C729E87F6500315611 /* Main.storyboard in Resources */,
@@ -360,17 +421,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				70D4570929FD7CB50014C3A0 /* TypeAliases.swift in Sources */,
+				706988582A11707700695ED5 /* PostModel.swift in Sources */,
 				7028306529EF13370039221E /* AddViewController.swift in Sources */,
+				706988502A116F7500695ED5 /* PostTableViewCell.swift in Sources */,
 				70D4570729FD718E0014C3A0 /* String.swift in Sources */,
 				70A472C029E87F6500315611 /* AppDelegate.swift in Sources */,
 				70A4731C29E8870800315611 /* SignViewController.swift in Sources */,
+				707E64E42A117CB50038CA7F /* PostControllerType.swift in Sources */,
 				70A4731729E883A200315611 /* UserViewController.swift in Sources */,
 				70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */,
 				7016B84B29E9E4730083AC08 /* UserSettingsViewController.swift in Sources */,
 				70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */,
+				707E64E62A117EAD0038CA7F /* TypesForPost.swift in Sources */,
 				70A4731329E8838200315611 /* UIViewController.swift in Sources */,
+				707E64E82A11808C0038CA7F /* UserType.swift in Sources */,
+				7069885A2A11733100695ED5 /* UITableView.swift in Sources */,
 				70A4732129E8894400315611 /* SignType.swift in Sources */,
-				70A4730F29E8833200315611 /* MainTabBarController.swift in Sources */,
+				70A4730F29E8833200315611 /* AgentTabBarController.swift in Sources */,
+				7069885C2A11737E00695ED5 /* UITableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,13 +583,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RYL5V28X4W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "kufar-analogue/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Flat Finder";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used for taking photos for new posts";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Used for chosing photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for chosing photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = appiconmaker;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -544,13 +617,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RYL5V28X4W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "kufar-analogue/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Flat Finder";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used for taking photos for new posts";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Used for chosing photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for chosing photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = appiconmaker;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -592,6 +670,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7069885D2A11754000695ED5 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		70A472D329E8804000315611 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -619,6 +705,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7069885E2A11754000695ED5 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7069885D2A11754000695ED5 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
 		70A472D429E8804000315611 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 70A472D329E8804000315611 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
