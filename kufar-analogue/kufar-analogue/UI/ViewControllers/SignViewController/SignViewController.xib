@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +13,7 @@
                 <outlet property="emailTextField" destination="WJk-BH-Ye1" id="kUW-Ic-X4c"/>
                 <outlet property="forgetPasswordButton" destination="CFj-4I-RvG" id="bzp-f1-HEA"/>
                 <outlet property="inputBottomConstraint" destination="ccl-6m-FMW" id="ElA-6L-RiZ"/>
+                <outlet property="loadingView" destination="D2P-HV-QiD" id="gas-GR-Ung"/>
                 <outlet property="passwordTextField" destination="L2e-LT-Kse" id="FlH-n2-ZeW"/>
                 <outlet property="signInButton" destination="fsZ-Dm-a4b" id="9JX-Ta-OeV"/>
                 <outlet property="signUpButton" destination="p9x-ea-mhk" id="H7G-1r-CIB"/>
@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8TY-Yr-Du3">
-                    <rect key="frame" x="16" y="671" width="398" height="211"/>
+                    <rect key="frame" x="16" y="660.66666666666663" width="398" height="255.33333333333337"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-BH-Ye1">
                             <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
@@ -47,8 +47,17 @@
                                 <action selector="forgetPasswordAction:" destination="-1" eventType="touchUpInside" id="tOh-Hn-CFR"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-Dm-a4b">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDy-07-qP3">
                             <rect key="frame" x="0.0" y="132.33333333333337" width="398" height="34.333333333333343"/>
+                            <color key="tintColor" systemColor="systemPurpleColor"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="tinted" title="Sign In as guest"/>
+                            <connections>
+                                <action selector="signInAsGuestAction:" destination="-1" eventType="touchUpInside" id="2fz-6R-Z7N"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-Dm-a4b">
+                            <rect key="frame" x="0.0" y="176.66666666666674" width="398" height="34.333333333333343"/>
                             <color key="tintColor" red="1" green="0.51235960331584729" blue="0.99858974373185971" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
@@ -57,7 +66,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9x-ea-mhk">
-                            <rect key="frame" x="0.0" y="176.66666666666663" width="398" height="34.333333333333343"/>
+                            <rect key="frame" x="0.0" y="221" width="398" height="34.333333333333343"/>
                             <color key="tintColor" red="0.99837976689999997" green="0.51290434600000001" blue="0.98935621979999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="gray" title="Sign Up"/>
@@ -68,10 +77,10 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0w-Jg-QeP">
-                    <rect key="frame" x="16" y="75" width="398" height="580"/>
+                    <rect key="frame" x="16" y="16" width="398" height="628.66666666666663"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLAT FINDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtk-l6-3jb">
-                            <rect key="frame" x="60.666666666666657" y="262.66666666666669" width="276.66666666666674" height="55"/>
+                            <rect key="frame" x="60.666666666666657" y="287" width="276.66666666666674" height="55"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
                             <color key="textColor" red="1" green="0.51655786837005113" blue="0.99781335868611742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -83,24 +92,35 @@
                         <constraint firstItem="Rtk-l6-3jb" firstAttribute="centerX" secondItem="k0w-Jg-QeP" secondAttribute="centerX" id="c8q-bW-BCJ"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2P-HV-QiD">
+                    <rect key="frame" x="1000" y="59" width="430" height="823"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="D2P-HV-QiD" secondAttribute="bottom" constant="-612" id="AXe-zZ-Ifv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="k0w-Jg-QeP" secondAttribute="trailing" constant="16" id="DaO-Ug-zm6"/>
                 <constraint firstItem="8TY-Yr-Du3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Dgl-ZN-1d0"/>
+                <constraint firstItem="D2P-HV-QiD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="J5n-qF-HWi"/>
                 <constraint firstItem="k0w-Jg-QeP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="LS9-vg-6Yp"/>
+                <constraint firstItem="D2P-HV-QiD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RGB-nW-Xfg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8TY-Yr-Du3" secondAttribute="trailing" constant="16" id="WpS-Xd-cx3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8TY-Yr-Du3" secondAttribute="bottom" constant="16" id="ccl-6m-FMW"/>
                 <constraint firstItem="k0w-Jg-QeP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="czW-Xy-mcP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D2P-HV-QiD" secondAttribute="trailing" id="dO2-sc-lxM"/>
                 <constraint firstItem="8TY-Yr-Du3" firstAttribute="top" secondItem="k0w-Jg-QeP" secondAttribute="bottom" constant="16" id="nnR-8O-mOJ"/>
             </constraints>
-            <point key="canvasLocation" x="136.80000000000001" y="19.340329835082461"/>
+            <point key="canvasLocation" x="136.74418604651163" y="19.313304721030043"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

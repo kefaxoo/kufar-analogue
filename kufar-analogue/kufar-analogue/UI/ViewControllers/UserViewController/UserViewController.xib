@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserViewController" customModule="kufar_analogue" customModuleProvider="target">
             <connections>
                 <outlet property="emptyProfileLabel" destination="6qs-Ha-bg5" id="PgT-YT-JwI"/>
+                <outlet property="noPostLabel" destination="dR6-Jn-0JS" id="yKY-NJ-lym"/>
                 <outlet property="postsTableView" destination="hGQ-pr-mQ1" id="4IX-VA-Gcc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,15 +31,23 @@
                     <rect key="frame" x="0.0" y="59" width="430" height="839"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is no your posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dR6-Jn-0JS">
+                    <rect key="frame" x="130.66666666666666" y="468" width="168.99999999999997" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="6qs-Ha-bg5" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="48i-an-Fmz"/>
                 <constraint firstItem="6qs-Ha-bg5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="CXi-HS-kDt"/>
+                <constraint firstItem="dR6-Jn-0JS" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="L6Z-yr-hgb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hGQ-pr-mQ1" secondAttribute="bottom" id="aMh-9X-vfw"/>
                 <constraint firstItem="hGQ-pr-mQ1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bsO-rr-gOb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hGQ-pr-mQ1" secondAttribute="trailing" id="edf-cL-9dZ"/>
+                <constraint firstItem="dR6-Jn-0JS" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="gbR-lV-TVR"/>
                 <constraint firstItem="hGQ-pr-mQ1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pKU-O7-wPj"/>
             </constraints>
             <point key="canvasLocation" x="107.44186046511628" y="20.600858369098713"/>

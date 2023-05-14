@@ -33,10 +33,17 @@ class AddViewController: UIViewController {
     private var photo: UIImage?
     private var bathroomType = "combined"
     private var balconyType = "glazed"
+    private var post: PostModel?
+    private var type: PostControllerType = .add
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInterface()
+    }
+    
+    func set(_ post: PostModel) {
+        self.post = post
+        self.type = .edit
     }
     
     private func setupInterface() {
@@ -52,6 +59,19 @@ class AddViewController: UIViewController {
             self.bathroomType = "separate"
         }
         
+        if self.type == .edit {
+            guard let post,
+                  let bathroomType = BathroomType(rawValue: post.bathroomType)
+            else { return }
+            
+            switch bathroomType {
+                case .separate:
+                    separateAction.state = .on
+                case .combined:
+                    combinedAction.state = .on
+            }
+        }
+        
         bathroomTypePopUpButton.menu = UIMenu(options: .displayInline, children: [combinedAction, separateAction])
         
         let glazedAction = UIAction(title: "Glazed balcony") { _ in
@@ -62,12 +82,54 @@ class AddViewController: UIViewController {
             self.balconyType = "non-glazed"
         }
         
+        if self.type == .edit {
+            guard let post,
+                  let balconyType = BalconyType(rawValue: post.balconyType)
+            else { return }
+            
+            switch balconyType {
+                case .glazed:
+                    glazedAction.state = .on
+                case .nonGlazed:
+                    nonGlazedAction.state = .on
+            }
+        }
+        
         balconyTypePopUpButton.menu = UIMenu(options: .displayInline, children: [glazedAction, nonGlazedAction])
         
         descriptionTextView.isEditable = true
         descriptionTextView.layer.borderWidth = 2
         descriptionTextView.layer.borderColor = UIColor.label.withAlphaComponent(0.3).cgColor
         descriptionTextView.layer.cornerRadius = 8
+        
+        if self.type == .edit {
+            guard let post else { return }
+            
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            if !post.imageUrl.isEmpty {
+                let storageRef = Storage.storage().reference()
+                let photoRef = storageRef.child(post.imageUrl)
+                photoRef.downloadURL { url, error in
+                    if error != nil {
+                        self.photoImageView.image = UIImage(systemName: "xmark.circle")
+                    } else {
+                        self.photoImageView.sd_setImage(with: url)
+                    }
+                }
+            }
+            
+            nameTextField.text = post.name
+            phoneTextField.text = post.phoneNumber
+            totalNumberOfRoomsTextField.text = "\(post.totalNumberOfRooms)"
+            floorTextField.text = "\(post.floor)"
+            numberOfFloorsTextField.text = "\(post.numberOfFloors)"
+            totalAreaTextField.text = "\(post.totalArea)"
+            bathroomTypePopUpButton.setTitle(BathroomType(rawValue: post.bathroomType)!.title, for: .normal)
+            balconyTypePopUpButton.setTitle(BalconyType(rawValue: post.balconyType)!.title, for: .normal)
+            priceTextField.text = "\(post.price)"
+            descriptionTextView.text = post.description
+            addButton.setTitle("Edit post", for: .normal)
+        }
     }
     
     @IBAction func addPhotoAction(_ sender: Any) {
