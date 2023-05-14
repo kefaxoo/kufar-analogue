@@ -119,8 +119,7 @@ class AddViewController: UIViewController {
         guard let totalNumberOfRoomsStr = totalNumberOfRoomsTextField.text,
               let totalNumberOfRooms = Int(totalNumberOfRoomsStr)
         else {
-            // MARK: -
-            // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Write total number of Rooms💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -129,8 +128,7 @@ class AddViewController: UIViewController {
               numberOfFloors > 1,
               numberOfFloors < 30
         else {
-            // MARK: -
-            // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Write number of floors (1-30)💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -140,8 +138,7 @@ class AddViewController: UIViewController {
               floor > 1,
               floor < 30
         else {
-            // MARK: -
-            // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Write floor (1-30)💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -149,20 +146,17 @@ class AddViewController: UIViewController {
               let totalArea = Double(totalAreaStr),
               totalArea > 1
         else {
-            // MARK: -
-            // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Write total area💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
         if bathroomType.isEmpty {
-            // MARK: -
-            // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Please, select bathroom type💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
         if balconyType.isEmpty {
-            // MARK: -
-            // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Please, select balcony type💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -170,8 +164,7 @@ class AddViewController: UIViewController {
               let price = Int(priceStr),
               price > 1
         else {
-            // MARK: -
-            // TODO: Display indicator
+            SPIndicator.present(title: "Error", message: "Please, write price💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
