@@ -331,7 +331,7 @@ class AddViewController: UIViewController {
                 return
             }
             
-            let uploadTask = photoRef.putData(photoData) { _, error in
+            photoRef.putData(photoData) { _, error in
                 if let error {
                     SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                 } else {

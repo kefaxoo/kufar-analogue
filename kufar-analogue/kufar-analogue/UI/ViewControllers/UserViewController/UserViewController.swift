@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import SPIndicator
 import FirebaseFirestore
+import FirebaseStorage
 
 class UserViewController: UIViewController {
 
@@ -130,6 +131,56 @@ extension UserViewController: UITableViewDataSource {
         
         postCell.set(posts[indexPath.row])
         return postCell
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        if Auth.auth().currentUser != nil {
+            guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
+                  let post = cell.post
+            else {
+                // MARK: -
+                // TODO: Display indicator
+                return nil
+            }
+            
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { sugesstedActions in
+                let deleteAction = UIAction(title: "Delete post", image: UIImage(systemName: "trash.slash.fill"), attributes: .destructive) { _ in
+                    let db = Firestore.firestore()
+                    let id = "\(post.email)-\(post.name.toUnixFilename)"
+                    db.collection("posts").document(id).delete { error in
+                        if error != nil {
+                            // MARK: -
+                            // TODO: Display indicator
+                        } else {
+                            if !post.imageUrl.isEmpty {
+                                let storage = Storage.storage()
+                                let storageRef = storage.reference()
+                                let path = post.imageUrl
+                                let photoRef = storageRef.child(path)
+                                photoRef.delete { error in
+                                    if error != nil {
+                                        // MARK: -
+                                        // TODO: Display indicator
+                                    } else {
+                                        SPIndicator.present(title: "Success delete post", preset: .done, haptic: .success, from: .top)
+                                        self.postsTableView.reloadData()
+                                    }
+                                }
+                            } else {
+                                SPIndicator.present(title: "Success delete post", preset: .done, haptic: .success, from: .top)
+                                self.postsTableView.reloadData()
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                
+                return UIMenu(options: .displayInline, children: [deleteAction])
+            }
+        }
+        
+        return nil
     }
 }
 
