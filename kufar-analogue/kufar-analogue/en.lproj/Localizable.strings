@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  kufar-analogue
+
+  Created by Bahdan Piatrouski on 17.05.23.
+  
+*/
+
+"tabBar.profile" = "Profile";
+"tabBar.add" = "Add";

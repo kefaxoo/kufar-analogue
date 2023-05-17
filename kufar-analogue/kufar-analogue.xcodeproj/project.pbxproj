@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70096B392A155D1300A0400A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 70096B3B2A155D1300A0400A /* Localizable.strings */; };
+		70096B3E2A155D3700A0400A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70096B3D2A155D3700A0400A /* Bundle.swift */; };
+		70096B402A155D7100A0400A /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70096B3F2A155D7100A0400A /* Localization.swift */; };
 		7016B84B29E9E4730083AC08 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7016B84929E9E4730083AC08 /* UserSettingsViewController.swift */; };
 		7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7016B84A29E9E4730083AC08 /* UserSettingsViewController.xib */; };
 		7028306529EF13370039221E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028306329EF13370039221E /* AddViewController.swift */; };
@@ -68,6 +71,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		70096B362A155CE500A0400A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		70096B3A2A155D1300A0400A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		70096B3C2A155D1600A0400A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		70096B3D2A155D3700A0400A /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		70096B3F2A155D7100A0400A /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		7016B84929E9E4730083AC08 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		7016B84A29E9E4730083AC08 /* UserSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSettingsViewController.xib; sourceTree = "<group>"; };
 		7028306329EF13370039221E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +232,7 @@
 				70A472CA29E87F6600315611 /* LaunchScreen.storyboard */,
 				70A472CD29E87F6600315611 /* Info.plist */,
 				70D4570829FD7CB50014C3A0 /* TypeAliases.swift */,
+				70096B3B2A155D1300A0400A /* Localizable.strings */,
 			);
 			path = "kufar-analogue";
 			sourceTree = "<group>";
@@ -253,6 +262,7 @@
 				70D4570629FD718E0014C3A0 /* String.swift */,
 				706988592A11733100695ED5 /* UITableView.swift */,
 				7069885B2A11737E00695ED5 /* UITableViewCell.swift */,
+				70096B3D2A155D3700A0400A /* Bundle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -293,6 +303,7 @@
 				707E64E32A117CB50038CA7F /* PostControllerType.swift */,
 				707E64E52A117EAD0038CA7F /* TypesForPost.swift */,
 				707E64E72A11808C0038CA7F /* UserType.swift */,
+				70096B3F2A155D7100A0400A /* Localization.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -379,6 +390,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 70A472B329E87F6500315611;
 			packageReferences = (
@@ -406,6 +418,7 @@
 				70A4731829E883A200315611 /* UserViewController.xib in Resources */,
 				706988512A116F7500695ED5 /* PostTableViewCell.xib in Resources */,
 				7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */,
+				70096B392A155D1300A0400A /* Localizable.strings in Resources */,
 				70A472C929E87F6600315611 /* Assets.xcassets in Resources */,
 				70A472C729E87F6500315611 /* Main.storyboard in Resources */,
 				7028306629EF13370039221E /* AddViewController.xib in Resources */,
@@ -422,6 +435,7 @@
 			files = (
 				70D4570929FD7CB50014C3A0 /* TypeAliases.swift in Sources */,
 				706988582A11707700695ED5 /* PostModel.swift in Sources */,
+				70096B402A155D7100A0400A /* Localization.swift in Sources */,
 				7028306529EF13370039221E /* AddViewController.swift in Sources */,
 				706988502A116F7500695ED5 /* PostTableViewCell.swift in Sources */,
 				70D4570729FD718E0014C3A0 /* String.swift in Sources */,
@@ -433,6 +447,7 @@
 				7016B84B29E9E4730083AC08 /* UserSettingsViewController.swift in Sources */,
 				70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */,
 				707E64E62A117EAD0038CA7F /* TypesForPost.swift in Sources */,
+				70096B3E2A155D3700A0400A /* Bundle.swift in Sources */,
 				70A4731329E8838200315611 /* UIViewController.swift in Sources */,
 				707E64E82A11808C0038CA7F /* UserType.swift in Sources */,
 				7069885A2A11733100695ED5 /* UITableView.swift in Sources */,
@@ -445,10 +460,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		70096B3B2A155D1300A0400A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				70096B3A2A155D1300A0400A /* en */,
+				70096B3C2A155D1600A0400A /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		70A472C529E87F6500315611 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				70A472C629E87F6500315611 /* Base */,
+				70096B362A155CE500A0400A /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -468,6 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -528,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

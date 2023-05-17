@@ -14,4 +14,8 @@ extension String {
         newSelf.removeAll(where: { removeChars.contains($0) })
         return newSelf
     }
+    
+    var localized: String {
+        return NSLocalizedString(self, tableName: "Localizable", bundle: Bundle.localizedBundle(), value: self, comment: self)
+    }
 }
