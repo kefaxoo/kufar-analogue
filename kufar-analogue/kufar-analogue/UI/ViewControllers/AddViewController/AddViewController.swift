@@ -35,10 +35,15 @@ class AddViewController: UIViewController {
     private var balconyType = "glazed"
     private var post: PostModel?
     private var type: PostControllerType = .add
+    private var isPhotoEdit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInterface()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func set(_ post: PostModel) {
@@ -50,6 +55,10 @@ class AddViewController: UIViewController {
         photoView.layer.borderColor = UIColor.label.withAlphaComponent(0.3).cgColor
         photoView.layer.borderWidth = 2
         photoView.layer.cornerRadius = 8
+        
+        if type == .edit {
+            nameTextField.isEnabled = false
+        }
         
         let combinedAction = UIAction(title: "Combined bathroom") { _ in
             self.bathroomType = "combined"
@@ -113,7 +122,9 @@ class AddViewController: UIViewController {
                     if error != nil {
                         self.photoImageView.image = UIImage(systemName: "xmark.circle")
                     } else {
-                        self.photoImageView.sd_setImage(with: url)
+                        self.photoImageView.sd_setImage(with: url) { image, error, _, _ in
+                            self.photo = image
+                        }
                     }
                 }
             }
@@ -232,42 +243,12 @@ class AddViewController: UIViewController {
         
         if let description = descriptionTextView.text,
            !description.isEmpty {
-            if photo != nil {
-                uploadPhoto(email: email, name: name) { imageUrl in
-                    self.addPost(
-                        email: email,
-                        description: description,
-                        floor: floor,
-                        imageUrl: imageUrl,
-                        name: name,
-                        numberOfFloors: numberOfFloors,
-                        phoneNumber: phoneNumber,
-                        price: price,
-                        totalArea: totalArea,
-                        totalNumberOfRooms: totalNumberOfRooms
-                    )
-                }
-            } else {
-                addPostWithoutPhoto {
-                    self.addPost(
-                        email: email,
-                        description: description,
-                        floor: floor,
-                        name: name,
-                        numberOfFloors: numberOfFloors,
-                        phoneNumber: phoneNumber,
-                        price: price,
-                        totalArea: totalArea,
-                        totalNumberOfRooms: totalNumberOfRooms
-                    )
-                }
-            }
-        } else {
-            if photo != nil {
-                addPostWithoutDescription {
-                    self.uploadPhoto(email: email, name: name) { imageUrl in
+            if type == .add {
+                if photo != nil {
+                    uploadPhoto(email: email, name: name) { imageUrl in
                         self.addPost(
                             email: email,
+                            description: description,
                             floor: floor,
                             imageUrl: imageUrl,
                             name: name,
@@ -278,12 +259,11 @@ class AddViewController: UIViewController {
                             totalNumberOfRooms: totalNumberOfRooms
                         )
                     }
-                }
-            } else {
-                addPostWithoutPhoto {
-                    self.addPostWithoutDescription {
+                } else {
+                    addPostWithoutPhoto {
                         self.addPost(
                             email: email,
+                            description: description,
                             floor: floor,
                             name: name,
                             numberOfFloors: numberOfFloors,
@@ -292,6 +272,63 @@ class AddViewController: UIViewController {
                             totalArea: totalArea,
                             totalNumberOfRooms: totalNumberOfRooms
                         )
+                    }
+                }
+            } else if type == .edit {
+                guard let post else { return }
+                
+                if !isPhotoEdit {
+                    self.updatePost(email: email, description: description, floor: floor, imageUrl: post.imageUrl, name: name, numberOfFloors: numberOfFloors, phoneNumber: phoneNumber, price: price, totalArea: totalArea, totalNumberOfRooms: totalNumberOfRooms)
+                } else {
+                    uploadPhoto(email: email, name: name) { imageUrl in
+                        self.updatePost(email: email, description: description, floor: floor, imageUrl: imageUrl, name: name, numberOfFloors: numberOfFloors, phoneNumber: phoneNumber, price: price, totalArea: totalArea, totalNumberOfRooms: totalNumberOfRooms)
+                    }
+                }
+            }
+        } else {
+            if type == .add {
+                if photo != nil {
+                    addPostWithoutDescription {
+                        self.uploadPhoto(email: email, name: name) { imageUrl in
+                            self.addPost(
+                                email: email,
+                                floor: floor,
+                                imageUrl: imageUrl,
+                                name: name,
+                                numberOfFloors: numberOfFloors,
+                                phoneNumber: phoneNumber,
+                                price: price,
+                                totalArea: totalArea,
+                                totalNumberOfRooms: totalNumberOfRooms
+                            )
+                        }
+                    }
+                } else {
+                    addPostWithoutPhoto {
+                        self.addPostWithoutDescription {
+                            self.addPost(
+                                email: email,
+                                floor: floor,
+                                name: name,
+                                numberOfFloors: numberOfFloors,
+                                phoneNumber: phoneNumber,
+                                price: price,
+                                totalArea: totalArea,
+                                totalNumberOfRooms: totalNumberOfRooms
+                            )
+                        }
+                    }
+                }
+            } else if type == .edit {
+                guard let post else { return }
+                
+                addPostWithoutDescription {
+                    if !self.isPhotoEdit {
+                        self.updatePost(email: email, floor: floor, imageUrl: post.imageUrl, name: name, numberOfFloors: numberOfFloors, phoneNumber: phoneNumber, price: price, totalArea: totalArea, totalNumberOfRooms: totalNumberOfRooms)
+                    } else {
+                        self.uploadPhoto(email: email, name: name) { imageUrl in
+                            self.updatePost(email: email, floor: floor, imageUrl: imageUrl, name: name, numberOfFloors: numberOfFloors, phoneNumber: phoneNumber, price: price, totalArea: totalArea, totalNumberOfRooms: totalNumberOfRooms)
+                        }
                     }
                 }
             }
@@ -365,6 +402,31 @@ class AddViewController: UIViewController {
             }
         }
     }
+    
+    private func updatePost(email: String, description: String = "", floor: Int, imageUrl: String = "", name: String, numberOfFloors: Int, phoneNumber: String, price: Int, totalArea: Double, totalNumberOfRooms: Int) {
+        let db = Firestore.firestore()
+        let id = "\(email)-\(name.toUnixFilename)"
+        db.collection("posts").document(id).updateData([
+            "balconyType": self.balconyType,
+            "bathroomType": self.bathroomType,
+            "creatorEmail": email,
+            "description": description,
+            "floor": floor,
+            "imageUrl": imageUrl,
+            "numberOfFloors": numberOfFloors,
+            "phoneNumber": phoneNumber,
+            "price": price,
+            "totalArea": totalArea,
+            "totalNumberOfRooms": totalNumberOfRooms
+        ]) { error in
+            if let error {
+                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+            } else {
+                SPIndicator.present(title: "Success", message: "Post successfully edited", preset: .done, haptic: .success, from: .top)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
 }
 
 extension AddViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -377,5 +439,6 @@ extension AddViewController: UIImagePickerControllerDelegate & UINavigationContr
 
         self.photo = image
         self.photoImageView.image = image
+        self.isPhotoEdit = true
     }
 }
