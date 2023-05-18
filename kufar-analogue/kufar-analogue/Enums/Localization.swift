@@ -12,4 +12,10 @@ enum Localization {
         case profile = "tabBar.profile"
         case add = "tabBar.add"
     }
+    enum NavBar: String {
+        
+        case setting = "navBar.setting"
+        case signOut = "navBar.sign"
+
+    }
 }

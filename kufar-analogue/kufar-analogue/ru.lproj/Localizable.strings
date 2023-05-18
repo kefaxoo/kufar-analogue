@@ -1,6 +1,5 @@
 
-/*  */
 "tabBar.add" = "Создать";
-
-/*  */
 "tabBar.profile" = "Профиль";
+"navBar.setting" = "Настройки";
+"navBar.sign" = "Выjти";

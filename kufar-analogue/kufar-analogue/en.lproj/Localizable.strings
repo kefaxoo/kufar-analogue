@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   kufar-analogue
 
@@ -8,3 +8,5 @@
 
 "tabBar.profile" = "Profile";
 "tabBar.add" = "Add";
+"navBar.setting" = "Setting";
+"navBar.sign" = "Sign Out";
