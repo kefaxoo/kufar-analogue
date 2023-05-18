@@ -70,7 +70,7 @@ class UserViewController: UIViewController {
     private func configureNavBar() {
         if userType == .agent {
             self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(openSettingsAction(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavBar.setting.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign in", style: .plain, target: self, action: #selector(openLoginAction(_:)))
         }
     }
@@ -78,7 +78,7 @@ class UserViewController: UIViewController {
     private func updateUserInfo() {
         if let user = Auth.auth().currentUser {
             emptyProfileLabel.isHidden = true
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(signOutAccount(_:)))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
             if let name = user.displayName {
                 self.navigationItem.title = name
             } else {
