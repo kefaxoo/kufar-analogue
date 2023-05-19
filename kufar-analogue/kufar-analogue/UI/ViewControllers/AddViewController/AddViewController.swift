@@ -170,29 +170,29 @@ class AddViewController: UIViewController {
     
     @IBAction func addPostAction(_ sender: Any) {
         guard let user = Auth.auth().currentUser else {
-            SPIndicator.present(title: "Error", message: "User doesn't exist", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "User doesn't exist", preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let email = user.email else {
-            SPIndicator.present(title: "Error", message: "User doesn't have email", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "User doesn't have email", preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let name = nameTextField.text else {
-            SPIndicator.present(title: "Error", message: "Write name post", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Write name post", preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let phoneNumber = phoneTextField.text else {
-            SPIndicator.present(title: "Error", message: "Write phone number", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Write phone number", preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let totalNumberOfRoomsStr = totalNumberOfRoomsTextField.text,
               let totalNumberOfRooms = Int(totalNumberOfRoomsStr)
         else {
-            SPIndicator.present(title: "Error", message: "Write total number of Rooms💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Write total number of Rooms💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -201,7 +201,7 @@ class AddViewController: UIViewController {
               numberOfFloors > 1,
               numberOfFloors < 30
         else {
-            SPIndicator.present(title: "Error", message: "Write number of floors (1-30)💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Write number of floors (1-30)💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -211,7 +211,7 @@ class AddViewController: UIViewController {
               floor > 1,
               floor < 30
         else {
-            SPIndicator.present(title: "Error", message: "Write floor (1-30)💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Write floor (1-30)💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -219,17 +219,17 @@ class AddViewController: UIViewController {
               let totalArea = Double(totalAreaStr),
               totalArea > 1
         else {
-            SPIndicator.present(title: "Error", message: "Write total area💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Write total area💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
         if bathroomType.isEmpty {
-            SPIndicator.present(title: "Error", message: "Please, select bathroom type💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Please, select bathroom type💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
         if balconyType.isEmpty {
-            SPIndicator.present(title: "Error", message: "Please, select balcony type💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Please, select balcony type💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -237,7 +237,7 @@ class AddViewController: UIViewController {
               let price = Int(priceStr),
               price > 1
         else {
-            SPIndicator.present(title: "Error", message: "Please, write price💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Please, write price💅", preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -364,13 +364,13 @@ class AddViewController: UIViewController {
             let path = "images/\(email)-\(name.toUnixFilename).png"
             let photoRef = storageRef.child(path)
             guard let photoData = photo.pngData() else {
-                SPIndicator.present(title: "Error", message: "Error during photo processing", preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: "Error during photo processing", preset: .error, haptic: .error, from: .top)
                 return
             }
             
             photoRef.putData(photoData) { _, error in
                 if let error {
-                    SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                    SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                 } else {
                     closure(path)
                 }
@@ -396,9 +396,9 @@ class AddViewController: UIViewController {
             "totalNumberOfRooms": totalNumberOfRooms
         ]) { error in
             if let error {
-                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
-                SPIndicator.present(title: "Success", message: "Post successfully created", preset: .done, haptic: .success, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.successIndicator.rawValue.localized, message: "Post successfully created", preset: .done, haptic: .success, from: .top)
             }
         }
     }
@@ -420,9 +420,9 @@ class AddViewController: UIViewController {
             "totalNumberOfRooms": totalNumberOfRooms
         ]) { error in
             if let error {
-                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
-                SPIndicator.present(title: "Success", message: "Post successfully edited", preset: .done, haptic: .success, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.successIndicator.rawValue.localized, message: "Post successfully edited", preset: .done, haptic: .success, from: .top)
                 self.navigationController?.popViewController(animated: true)
             }
         }
