@@ -29,6 +29,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var totalNumberOfRoomsLabel: UILabel!
     
     private var photo: UIImage?
     private var bathroomType = "combined"
@@ -51,6 +52,11 @@ class AddViewController: UIViewController {
         self.type = .edit
     }
     
+    private func setupLocalization() {
+        nameTextField.placeholder = "" // Localization.AddVC.Placeholders.name.rawValue.localizable
+        totalNumberOfRoomsLabel.text = "" // Localization...
+    }
+    
     private func setupInterface() {
         photoView.layer.borderColor = UIColor.label.withAlphaComponent(0.3).cgColor
         photoView.layer.borderWidth = 2
@@ -60,6 +66,7 @@ class AddViewController: UIViewController {
             nameTextField.isEnabled = false
         }
         
+        // MARK: -
         let combinedAction = UIAction(title: "Combined bathroom") { _ in
             self.bathroomType = "combined"
         }
@@ -139,13 +146,13 @@ class AddViewController: UIViewController {
             balconyTypePopUpButton.setTitle(BalconyType(rawValue: post.balconyType)!.title, for: .normal)
             priceTextField.text = "\(post.price)"
             descriptionTextView.text = post.description
+            // MARK: -
             addButton.setTitle("Edit post", for: .normal)
         }
     }
     
     @IBAction func addPhotoAction(_ sender: Any) {
         let takePhotoAction = UIAction(title: "Take photo") { _ in
-            print("Take photo")
             let imagePickerVC = UIImagePickerController()
             imagePickerVC.sourceType = .camera
             imagePickerVC.delegate = self
@@ -153,7 +160,6 @@ class AddViewController: UIViewController {
         }
         
         let openGalleryAction = UIAction(title: "Open gallery") { _ in
-            print("Open gallery")
             let imagePickerVC = UIImagePickerController()
             imagePickerVC.sourceType = .savedPhotosAlbum
             imagePickerVC.delegate = self
