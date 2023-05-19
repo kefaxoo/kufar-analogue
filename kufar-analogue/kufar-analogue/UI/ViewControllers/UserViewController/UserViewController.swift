@@ -75,11 +75,11 @@ class UserViewController: UIViewController {
         if userType == .agent {
             self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavBar.setting.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
-<<<<<<< HEAD
+//<<<<<<< HEAD
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(openLoginAction(_:)))
-=======
+//=======
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign in", style: .plain, target: self, action: #selector(openLoginAction(_:)))
->>>>>>> 727583c1c5a2fc30b700c3a58b4ba5ee8b3c92cd
+//>>>>>>> 727583c1c5a2fc30b700c3a58b4ba5ee8b3c92cd
         }
     }
     
