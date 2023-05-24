@@ -29,8 +29,7 @@ class UserViewController: UIViewController {
         postsTableView.register(PostTableViewCell.self)
         Firestore.firestore().collection("posts").getDocuments { querySnaphot, error in
             if error != nil {
-                // MARK: -
-                // TODO: Display indicator
+                SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
             } else {
                 if let user = Auth.auth().currentUser,
                    let email = user.email {
@@ -59,6 +58,11 @@ class UserViewController: UIViewController {
         }
     }
     
+    private func setupLocalization(){
+        noPostLabel.text = Localization.Label.noPostLabel.rawValue.localized
+        emptyProfileLabel.text = Localization.Label.emptyProfileLabel.rawValue.localized
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         updateUserInfo()
     }
@@ -70,15 +74,19 @@ class UserViewController: UIViewController {
     private func configureNavBar() {
         if userType == .agent {
             self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(openSettingsAction(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavBar.setting.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
+//<<<<<<< HEAD
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(openLoginAction(_:)))
+//=======
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign in", style: .plain, target: self, action: #selector(openLoginAction(_:)))
+//>>>>>>> 727583c1c5a2fc30b700c3a58b4ba5ee8b3c92cd
         }
     }
     
     private func updateUserInfo() {
         if let user = Auth.auth().currentUser {
             emptyProfileLabel.isHidden = true
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(signOutAccount(_:)))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
             if let name = user.displayName {
                 self.navigationItem.title = name
             } else {
@@ -90,7 +98,7 @@ class UserViewController: UIViewController {
     @objc private func openSettingsAction(_ sender: UIBarButtonItem) {
         let userSettingsVC = UserSettingsViewController(nibName: nil, bundle: nil)
         userSettingsVC.delegate = self
-        userSettingsVC.navigationItem.title = "User settings"
+        userSettingsVC.navigationItem.title = Localization.Label.userSetting.rawValue.localized
         self.navigationController?.pushViewController(userSettingsVC, animated: true)
     }
     
@@ -109,7 +117,7 @@ class UserViewController: UIViewController {
             signInVC.modalPresentationStyle = .fullScreen
             self.present(signInVC, animated: false)
         } catch let error as NSError {
-            SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
         }
     }
 }
@@ -138,19 +146,17 @@ extension UserViewController: UITableViewDataSource {
             guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
                   let post = cell.post
             else {
-                // MARK: -
-                // TODO: Display indicator
+                SPIndicator.present(title: Localization.IndicatorTitle.errorDeletePostIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
                 return nil
             }
             
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { sugesstedActions in
-                let deleteAction = UIAction(title: "Delete post", image: UIImage(systemName: "trash.slash.fill"), attributes: .destructive) { _ in
+                let deleteAction = UIAction(title: Localization.ActionButton.actionDeletePost.rawValue.localized, image: UIImage(systemName: "trash.slash.fill"), attributes: .destructive) { _ in
                     let db = Firestore.firestore()
                     let id = "\(post.email)-\(post.name.toUnixFilename)"
                     db.collection("posts").document(id).delete { error in
                         if error != nil {
-                            // MARK: -
-                            // TODO: Display indicator
+                            SPIndicator.present(title: Localization.IndicatorTitle.errorDeletePostIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
                         } else {
                             if !post.imageUrl.isEmpty {
                                 let storage = Storage.storage()
@@ -159,15 +165,14 @@ extension UserViewController: UITableViewDataSource {
                                 let photoRef = storageRef.child(path)
                                 photoRef.delete { error in
                                     if error != nil {
-                                        // MARK: -
-                                        // TODO: Display indicator
+                                        SPIndicator.present(title: Localization.IndicatorTitle.errorDeletePostIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
                                     } else {
-                                        SPIndicator.present(title: "Success delete post", preset: .done, haptic: .success, from: .top)
+                                        SPIndicator.present(title: Localization.IndicatorTitle.successDeletePostIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
                                         self.postsTableView.reloadData()
                                     }
                                 }
                             } else {
-                                SPIndicator.present(title: "Success delete post", preset: .done, haptic: .success, from: .top)
+                                SPIndicator.present(title: Localization.IndicatorTitle.successDeletePostIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
                                 self.postsTableView.reloadData()
                             }
                         }

@@ -29,10 +29,17 @@ class SignViewController: UIViewController {
         setObservers()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
-    
+    //
+    private func setupLocalization(){
+        emailTextField.placeholder = Localization.TextFieldPlaceholder.textFieldTypeEmail.rawValue.localized
+        passwordTextField.placeholder = Localization.TextFieldPlaceholder.textFieldTypePassword.rawValue.localized
+        
+
+    }
+    //
     override func viewDidAppear(_ animated: Bool) {
         if signType == .signUp {
-            self.navigationController?.navigationBar.backItem?.title = "Sign in"
+            self.navigationController?.navigationBar.backItem?.title = Localization.NavBar.signIn.rawValue.localized
         } else {
             self.navigationItem.title = nil
         }
@@ -112,15 +119,15 @@ class SignViewController: UIViewController {
     
     @IBAction func forgetPasswordAction(_ sender: Any) {
         guard let email = emailTextField.text, !email.isEmpty else {
-            SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.emailIsEmptyIndicator.rawValue.localized, preset: .error, haptic: .error, from: .top)
             return
         }
         
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
-                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
-                SPIndicator.present(title: "Password reset email sent", preset: .done, haptic: .success, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.passwordResetEmailSentIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
             }
         }
     }
@@ -134,18 +141,18 @@ class SignViewController: UIViewController {
     
     @IBAction func signInAction(_ sender: Any) {
         guard let email = emailTextField.text, !email.isEmpty else {
-            SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.emailIsEmptyIndicator.rawValue.localized, preset: .error, haptic: .error, from: .top)
             return
         }
         
         guard let password = passwordTextField.text, !password.isEmpty else {
-            SPIndicator.present(title: "Password is empty", preset: .error, haptic: .error, from: .top)
+            SPIndicator.present(title: Localization.IndicatorTitle.passwordIsEmptyIndicator.rawValue.localized, preset: .error, haptic: .error, from: .top)
             return
         }
         
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
-                SPIndicator.present(title: "Error signing in", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.errorSigningInIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
                 if let user = Auth.auth().currentUser {
                     if user.isEmailVerified {
@@ -153,7 +160,7 @@ class SignViewController: UIViewController {
                         agentTabBarController.modalPresentationStyle = .fullScreen
                         self.present(agentTabBarController, animated: false)
                     } else {
-                        SPIndicator.present(title: "Verify email", preset: .error, haptic: .error, from: .top)
+                        SPIndicator.present(title: Localization.IndicatorTitle.verifyEmailIndicator.rawValue.localized, preset: .error, haptic: .error, from: .top)
                     }
                 }
             }
@@ -167,26 +174,26 @@ class SignViewController: UIViewController {
             self.navigationController?.pushViewController(signVC, animated: true)
         } else if signType == .signUp {
             guard let email = emailTextField.text, !email.isEmpty else {
-                SPIndicator.present(title: "Email is empty", preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.emailIsEmptyIndicator.rawValue.localized, preset: .error, haptic: .error, from: .top)
                 return
             }
             
             guard let password = passwordTextField.text, !password.isEmpty else {
-                SPIndicator.present(title: "Password is empty", preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.IndicatorTitle.passwordIsEmptyIndicator.rawValue.localized, preset: .error, haptic: .error, from: .top)
                 return
             }
             
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error {
-                    SPIndicator.present(title: "Error creating user", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                    SPIndicator.present(title: Localization.IndicatorTitle.errorCreatingUserIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                 } else {
                     guard let authResult else { return }
                     
                     authResult.user.sendEmailVerification(completion: { error in
                         if let error = error {
-                            SPIndicator.present(title: "Error sending verification email", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                            SPIndicator.present(title: Localization.IndicatorTitle.errorSendingVerificationEmailIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                         } else {
-                            SPIndicator.present(title: "Verification email sent", message: "Check your email and verify account", preset: .done, haptic: .success, from: .top)
+                            SPIndicator.present(title: Localization.IndicatorTitle.verificationEmailSentIndicator.rawValue.localized, message: Localization.IndicatorMessage.pleaseCheckYourEmailForVerifyEmailIndicator.rawValue.localized, preset: .done, haptic: .success, from: .top)
                             self.signType = .signIn
                             UIView.animate(withDuration: 1) {
                                 self.setInterface()
