@@ -12,11 +12,13 @@ enum Localization {
         case profile = "tabBar.profile"
         case add = "tabBar.add"
     }
-    enum NavBar: String {
-        case setting = "navBar.setting"
-        case signOut = "navBar.signOut"
-        case signIn = "navBar.signIn"
+    
+    enum NavigationBar: String {
+        case settings = "navigationBar.settings"
+        case signOut = "navigationBar.signOut"
+        case signIn = "navigationBar.signIn"
     }
+    
     enum Label: String {
         case userSetting = "label.userSetting"
         case userSettingNameLabel = "label.userSettingNameLabel"
@@ -80,11 +82,15 @@ enum Localization {
         case doYouWantToCreatePostWithoutDescription = "controller.doYouWantToCreatePostWithoutDescription"
         case doYouWantToCreatePostWithoutPhoto = "controller.doYouWantToCreatePostWithoutPhoto"
     }
+    
+    enum Alert {
+        enum Action: String {
+            case yes = "alert.action.yes"
+            case no = "alert.action.no"
+        }
+    }
+    
     enum ActionButton: String {
-        case actionTitleYes = "action.yes"
-        case actionTitleNo = "action.no"
-        case actionDeletePost = "action.delete"
-        
         case combinedBathroom = "action.combinedBathroom"
         case separateBathroom = "action.separateBathroom"
         case glazedBalcon = "action.glazedBalcon"
@@ -93,11 +99,16 @@ enum Localization {
         case takePhoto = "action.takePhoto"
         case openGalerry = "action.openGalerry"
     }
-    enum TextFieldPlaceholder: String {
-        case textFieldTypeName = "placeholder.textFieldTypeName"
-        case textFieldTypeEmail = "placeholder.textFieldTypeEmail"
-        case textFieldTypePassword = "placeholder.textFieldTypePassword"
-        case textFieldTypeAddress = "placeholder.textFieldTypeAddress"
+    
+    enum TextField {
+        enum Placeholder: String {
+            case typeSomething = "textField.placeholder.typeSomething"
+        }
+    }
+    
+    enum Words: String {
+        case name = "words.name"
+        case password = "words.password"
     }
 }
 

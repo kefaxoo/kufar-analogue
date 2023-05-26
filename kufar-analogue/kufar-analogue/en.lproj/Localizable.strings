@@ -64,10 +64,11 @@
 "navBar.setting" = "Setting";
 "navBar.signIn" = "Sign In";
 "navBar.signOut" = "Sign Out";
-"placeholder.textFieldTypeAddress" = "Enter address";
-"placeholder.textFieldTypeEmail" = "Enter email...";
-"placeholder.textFieldTypeName" = "Enter name...";
-"placeholder.textFieldTypePassword" = "Enter password...";
 "tabBar.add" = "Add";
 "label.trash" = "Delete";
 "label.edit" = "Edit";
+
+"textField.placeholder.typeSomething" = "Type %@...";
+
+"words.name" = "Name";
+"words.password" = "Password";

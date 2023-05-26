@@ -18,4 +18,8 @@ extension String {
     var localized: String {
         return NSLocalizedString(self, tableName: "Localizable", bundle: Bundle.localizedBundle(), value: self, comment: self)
     }
+    
+    func localizedWithParameter(text: String) -> String {
+        return String(format: self.localized, text)
+    }
 }

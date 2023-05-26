@@ -45,12 +45,12 @@ class UserSettingsViewController: UIViewController {
         userSettingEmailLabel.text = Localization.Label.userSettingEmailLabel.rawValue.localized
         userSettingPasswordLabel.text = Localization.Label.userSettingPasswordLabel.rawValue.localized
         
-        nameTextField.placeholder = Localization.TextFieldPlaceholder.textFieldTypeName.rawValue.localized
-        emailTextField.placeholder = Localization.TextFieldPlaceholder.textFieldTypeEmail.rawValue.localized
-        passwordTextField.placeholder = Localization.TextFieldPlaceholder.textFieldTypePassword.rawValue.localized
-        //?
+        nameTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.name.rawValue.localized)
+        emailTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: "email")
+        passwordTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.password.rawValue.localized)
+        // MARK: -
+        // NOTE: No localization
         saveChangesButton.setTitle(Localization.ButtonText.saveChangesText.rawValue.localized, for:.normal )
-        //?
     }
     
     @IBAction func saveChangesAction(_ sender: Any) {
@@ -61,7 +61,7 @@ class UserSettingsViewController: UIViewController {
         else { return }
         
         let alertVC = UIAlertController(title: Localization.AllertControllerTitle.saveChangesAllertControllerTitle.rawValue.localized, message: Localization.AllertControllerMessage.areYouSureToMakeChangesAllertControllerMessage.rawValue.localized, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: Localization.ActionButton.actionTitleYes.rawValue.localized, style: .default) { _ in
+        let yesAction = UIAlertAction(title: Localization.Alert.Action.yes.rawValue.localized, style: .default) { _ in
             if let user = Auth.auth().currentUser {
                 let changeProfileRequest = user.createProfileChangeRequest()
                 changeProfileRequest.displayName = name
@@ -99,7 +99,7 @@ class UserSettingsViewController: UIViewController {
         }
         
         alertVC.addAction(yesAction)
-        let noAction = UIAlertAction(title: Localization.ActionButton.actionTitleNo.rawValue.localized, style: .destructive) { _ in
+        let noAction = UIAlertAction(title: Localization.Alert.Action.no.rawValue.localized, style: .destructive) { _ in
             self.navigationController?.popViewController(animated: true)
         }
         

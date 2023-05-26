@@ -29,14 +29,13 @@ class SignViewController: UIViewController {
         setObservers()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
-    //
+    
     private func setupLocalization(){
-        emailTextField.placeholder = Localization.TextFieldPlaceholder.textFieldTypeEmail.rawValue.localized
-        passwordTextField.placeholder = Localization.TextFieldPlaceholder.textFieldTypePassword.rawValue.localized
-        
-
+        emailTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: "email")
+        passwordTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.password.rawValue.localized)
     }
-    //
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         if signType == .signUp {
             self.navigationController?.navigationBar.backItem?.title = Localization.NavBar.signIn.rawValue.localized
