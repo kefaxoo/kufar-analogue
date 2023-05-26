@@ -69,3 +69,5 @@
 "placeholder.textFieldTypeName" = "Enter name...";
 "placeholder.textFieldTypePassword" = "Enter password...";
 "tabBar.add" = "Add";
+"label.trash" = "Delete";
+"label.edit" = "Edit";

@@ -63,3 +63,5 @@
 "placeholder.textFieldTypePassword" = "Введите пароль...";
 "tabBar.add" = "Создать";
 "tabBar.profile" = "Профиль";
+"label.trash" = "Удалить";
+"label.edit" = "Изменить";

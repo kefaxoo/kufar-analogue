@@ -69,3 +69,5 @@
 "placeholder.textFieldTypeName" = "Увядзіце імя...";
 "placeholder.textFieldTypePassword" = "Увядзіце пароль...";
 "tabBar.add" = "Дадаць";
+"label.trash" = "Выдаліць";
+"label.edit" = "Змяніць";

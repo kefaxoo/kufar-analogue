@@ -25,6 +25,9 @@ enum Localization {
         case noPostLabel = "label.noPostLabel"
         case emptyProfileLabel = "label.emptyProfileLabel"
         case totalNumberOfRoomsLabel = "label.totalNumberOfRoomsLabel"
+        
+        case trashBtnLabel = "label.trash"
+        case editBtnLabel = "label.edit"
     }
     
     enum ButtonText: String {
