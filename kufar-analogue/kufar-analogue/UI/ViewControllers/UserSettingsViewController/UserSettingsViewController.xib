@@ -14,6 +14,10 @@
                 <outlet property="emailTextField" destination="3YQ-ew-3bp" id="jC2-A5-2wB"/>
                 <outlet property="nameTextField" destination="2EU-NN-aTW" id="uFd-1J-GlU"/>
                 <outlet property="passwordTextField" destination="MPO-nV-NVD" id="yzH-T4-Ljd"/>
+                <outlet property="saveChangesButton" destination="RMX-lJ-SMz" id="hak-MQ-FpE"/>
+                <outlet property="userSettingEmailLabel" destination="7ub-fd-b0s" id="LLN-SU-oUb"/>
+                <outlet property="userSettingNameLabel" destination="f9a-cN-zaJ" id="9RF-Dd-qVe"/>
+                <outlet property="userSettingPasswordLabel" destination="U9l-4r-oGL" id="Kv5-ay-LQl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
