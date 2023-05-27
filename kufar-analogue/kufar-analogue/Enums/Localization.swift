@@ -20,70 +20,72 @@ enum Localization {
     }
     
     enum Label: String {
-        case userSetting = "label.userSetting"
-        case userSettingNameLabel = "label.userSettingNameLabel"
-        case userSettingEmailLabel = "label.userSettingEmailLabel"
-        case userSettingPasswordLabel = "label.userSettingPasswordLabel"
-        case noPostLabel = "label.noPostLabel"
-        case emptyProfileLabel = "label.emptyProfileLabel"
-        case totalNumberOfRoomsLabel = "label.totalNumberOfRoomsLabel"
-        
-        case trashBtnLabel = "label.trash"
-        case editBtnLabel = "label.edit"
+        case totalNumebrOfRooms = "label.totalNumberOfRooms"
     }
     
-    enum ButtonText: String {
-        case saveChangesText = "button.saveChangesButton"
-        case editPost = "button.editPostButton"
-    }
-    enum IndicatorTitle: String {
-        case pleaseLogin = "indicator.pleaseLogin"
-        case errorIndicator = "indicator.errorIndicator"
-        case successIndicator = "indicator.successIndicator"
-        case successDeletePostIndicator = "indicator.successDeletePostIndicator"
-        case errorDeletePostIndicator = "indicator.errorDeletePostIndicator"
-        case emailIsEmptyIndicator = "indicator.emailIsEmptyIndicator"
-        case passwordResetEmailSentIndicator = "indicator.passwordResetEmailSentIndicator"
-        case passwordIsEmptyIndicator = "indicator.passwordIsEmptyIndicator"
-        case errorSigningInIndicator = "indicator.errorSigningInIndicator"
-        case verifyEmailIndicator = "indicator.verifyEmailIndicator"
-        case errorCreatingUserIndicator = "indicator.errorCreatingUserIndicator"
-        case errorSendingVerificationEmailIndicator = "indicator.errorSendingVerificationEmailIndicator"
-        case verificationEmailSentIndicator = "indicator.verificationEmailSentIndicator"
+    enum Button {
+        enum Menu {
+            enum Action: String {
+                case combinedBathroom = "button.menu.action.combinedBathroom"
+                case separateBathroom = "button.menu.action.separatedBathroom"
+                case glazedBalcon = "button.menu.action.glazedBalcon"
+                case nonGlazedBalcon = "button.menu.action.nonGlazedBalcon"
+                case takePhoto = "button.menu.action.takePhoto"
+                case openGallery = "button.menu.action.openGallery"
+            }
+        }
         
+        enum Title: String {
+            case addPost = "button.title.addPost"
+            case editPost = "button.title.editPost"
+        }
     }
-    enum IndicatorMessage: String {
-        case pleaseCheckYourEmailForConfirmNewEmailIndicator = "indicator.pleaseCheckYourEmailForConfirmNewEmailIndicator"
-        case pleaseCheckYourEmailForVerifyEmailIndicator = "indicator.pleaseCheckYourEmailForVerufyNewEmailIndicator"
-        case passwordHasLessIndicator = "indicator.passwordHasLessIndicator"
-        case LogInToChangeYourProfileIndicator = "indicator.LogInToChangeYourProfileIndicator"
+    
+    enum Indicator {
+        enum Title: String {
+            case error = "indicator.title.error"
+            case success = "indicator.title.success"
+            case resetPasswordMessageWasSent = "indicator.title.resetPasswordMessageWasSent"
+            
+            var localized: String {
+                return self.rawValue.localized
+            }
+        }
         
-        case UserDoesntExist = "indicator.UserDoesntExist"
-        case UserDoesntHaveEmail = "indicator.UserDoesntHaveEmail"
-        case WriteNamePost = "indicator.writeNamePost"
-        case WritePhoneNumber = "indicator.writePhoneNumber"
-        case WriteTotalNumberOfRooms = "indicator.writeTotalNumberOfRooms"
-        case WriteNumbersOfFloors = "indicator.writeNumbersOfFloors"
-        case WriteTotalArea = "indicator.writeTotalArea"
-        case PleaseSelectBathroomType = "indicator.pleaseSelectBathroomType"
-        case PleaseSelectBalconeType = "indicator.pleaseSelectBalconeType"
-        case WritePrice = "indicator.writePrice"
-        case errorDuringPhotoProcessing = "indicator.errorDuringPhotoProcessing"
-        case postSuccessfulyCreated = "indicator.postSuccessfulyCreated"
-        case postSuccessfulyEdited = "indicator.postSuccessfulyEdited"
-    }
-    enum AllertControllerTitle: String {
-        case saveChangesAllertControllerTitle = "controller.saveChangesAllertControllerTitle"
-        case thereIsNotDescription = "controller.thereIsNotDescription"
-        case thereIsNoPhoto = "controller.thereIsNoPhoto"
-    }
-    enum AllertControllerMessage: String {
-        case areYouSureToMakeChangesAllertControllerMessage = "controller.areYouSureToMakeChangesAllertControllerMessage"
-        case doYouWantToCreatePostWithoutDescription = "controller.doYouWantToCreatePostWithoutDescription"
-        case doYouWantToCreatePostWithoutPhoto = "controller.doYouWantToCreatePostWithoutPhoto"
+        enum Message: String {
+            case userDoesntExist = "indicator.message.userDoesntExist"
+            case userDoesntHaveEmail = "indicator.message.userDoesntHaveEmail"
+            case nameIsEmpty = "indicator.message.nameIsEmpty"
+            case phoneNumberIsEmpty = "indicator.message.phoneNumberIsEmpty"
+            case totalNumberOfRoomsIsEmpty = "indicator.message.totalNumberOfRoomsIsEmpty"
+            case numberOfFloorsIsEmpty = "indicator.message.numberOfFloorsIsEmpty"
+            case floorIsEmpty = "indicator.message.floorsIsEmpty"
+            case totalAreaIsEmpty = "indicator.message.totalAreaIsEmpty"
+            case bathroomTypeIsntSelected = "indicator.message.bathroomTypeIsntSelected"
+            case balconyTypeIsntSelected = "indicator.message.balconyTypeIsntSelected"
+            case priceIsEmpty = "indicator.message.priceIsEmpty"
+            case errorPhotoProcessing = "indicator.message.errorPhotoProcessing"
+            case postCreatedSuccessfully = "indicator.message.postCreatedSuccessfully"
+            case postEditedSuccessfully = "indicator.message.postEditedSuccessfully"
+            case emailIsEmpty = "indicator.message.emailIsEmpty"
+            case passwordIsEmpty = "indicator.message.passwordIsEmpty"
+            case verifyEmail = "indicator.message.verifyEmail"
+        }
     }
     
     enum Alert {
+        enum Controller {
+            enum Title: String {
+                case descriptionIsEmpty = "alert.controller.title.descriptionIsEmpty"
+                case photoIsEmpty = "alert.controller.title.photoIsEmpty"
+            }
+            
+            enum Message: String {
+                case createPostWithoutDescription = "alert.controller.message.createPostWithoutDescription"
+                case createPostWithoutPhoto = "alert.contoller.message.createPostWithoutPhoto"
+            }
+        }
+        
         enum Action: String {
             case yes = "alert.action.yes"
             case no = "alert.action.no"
