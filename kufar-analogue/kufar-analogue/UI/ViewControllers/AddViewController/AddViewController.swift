@@ -29,6 +29,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var totalNumberOfRoomsLabel: UILabel!
     
     private var photo: UIImage?
     private var bathroomType = "combined"
@@ -51,6 +52,11 @@ class AddViewController: UIViewController {
         self.type = .edit
     }
     
+    private func setupLocalization() {
+        nameTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.name.rawValue.localized)
+        totalNumberOfRoomsLabel.text = Localization.Label.totalNumebrOfRooms.rawValue.localized
+    }
+    
     private func setupInterface() {
         photoView.layer.borderColor = UIColor.label.withAlphaComponent(0.3).cgColor
         photoView.layer.borderWidth = 2
@@ -60,11 +66,11 @@ class AddViewController: UIViewController {
             nameTextField.isEnabled = false
         }
         
-        let combinedAction = UIAction(title: "Combined bathroom") { _ in
+        let combinedAction = UIAction(title: Localization.Button.Menu.Action.combinedBathroom.rawValue.localized) { _ in
             self.bathroomType = "combined"
         }
         
-        let separateAction = UIAction(title: "Separate bathroom") { _ in
+        let separateAction = UIAction(title: Localization.Button.Menu.Action.separateBathroom.rawValue.localized) { _ in
             self.bathroomType = "separate"
         }
         
@@ -83,11 +89,11 @@ class AddViewController: UIViewController {
         
         bathroomTypePopUpButton.menu = UIMenu(options: .displayInline, children: [combinedAction, separateAction])
         
-        let glazedAction = UIAction(title: "Glazed balcony") { _ in
+        let glazedAction = UIAction(title: Localization.Button.Menu.Action.glazedBalcon.rawValue.localized) { _ in
             self.balconyType = "glazed"
         }
         
-        let nonGlazedAction = UIAction(title: "Non-glazed balcony") { _ in
+        let nonGlazedAction = UIAction(title: Localization.Button.Menu.Action.nonGlazedBalcon.rawValue.localized) { _ in
             self.balconyType = "non-glazed"
         }
         
@@ -139,21 +145,19 @@ class AddViewController: UIViewController {
             balconyTypePopUpButton.setTitle(BalconyType(rawValue: post.balconyType)!.title, for: .normal)
             priceTextField.text = "\(post.price)"
             descriptionTextView.text = post.description
-            addButton.setTitle("Edit post", for: .normal)
+            addButton.setTitle(Localization.Button.Title.addPost.rawValue.localized, for: .normal)
         }
     }
     
     @IBAction func addPhotoAction(_ sender: Any) {
-        let takePhotoAction = UIAction(title: "Take photo") { _ in
-            print("Take photo")
+        let takePhotoAction = UIAction(title: Localization.Button.Menu.Action.takePhoto.rawValue.localized) { _ in
             let imagePickerVC = UIImagePickerController()
             imagePickerVC.sourceType = .camera
             imagePickerVC.delegate = self
             self.present(imagePickerVC, animated: true)
         }
         
-        let openGalleryAction = UIAction(title: "Open gallery") { _ in
-            print("Open gallery")
+        let openGalleryAction = UIAction(title: Localization.Button.Menu.Action.openGallery.rawValue.localized) { _ in
             let imagePickerVC = UIImagePickerController()
             imagePickerVC.sourceType = .savedPhotosAlbum
             imagePickerVC.delegate = self
@@ -170,29 +174,29 @@ class AddViewController: UIViewController {
     
     @IBAction func addPostAction(_ sender: Any) {
         guard let user = Auth.auth().currentUser else {
-            SPIndicator.present(title: "Error", message: "User doesn't exist", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.userDoesntExist.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let email = user.email else {
-            SPIndicator.present(title: "Error", message: "User doesn't have email", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.userDoesntHaveEmail.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let name = nameTextField.text else {
-            SPIndicator.present(title: "Error", message: "Write name post", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.nameIsEmpty.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let phoneNumber = phoneTextField.text else {
-            SPIndicator.present(title: "Error", message: "Write phone number", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.phoneNumberIsEmpty.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
         guard let totalNumberOfRoomsStr = totalNumberOfRoomsTextField.text,
               let totalNumberOfRooms = Int(totalNumberOfRoomsStr)
         else {
-            SPIndicator.present(title: "Error", message: "Write total number of Rooms💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.totalNumberOfRoomsIsEmpty.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -201,7 +205,7 @@ class AddViewController: UIViewController {
               numberOfFloors > 1,
               numberOfFloors < 30
         else {
-            SPIndicator.present(title: "Error", message: "Write number of floors (1-30)💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.numberOfFloorsIsEmpty.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -211,7 +215,7 @@ class AddViewController: UIViewController {
               floor > 1,
               floor < 30
         else {
-            SPIndicator.present(title: "Error", message: "Write floor (1-30)💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.floorIsEmpty.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -219,17 +223,17 @@ class AddViewController: UIViewController {
               let totalArea = Double(totalAreaStr),
               totalArea > 1
         else {
-            SPIndicator.present(title: "Error", message: "Write total area💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.totalAreaIsEmpty.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
         if bathroomType.isEmpty {
-            SPIndicator.present(title: "Error", message: "Please, select bathroom type💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.bathroomTypeIsntSelected.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
         if balconyType.isEmpty {
-            SPIndicator.present(title: "Error", message: "Please, select balcony type💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.balconyTypeIsntSelected.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -237,7 +241,7 @@ class AddViewController: UIViewController {
               let price = Int(priceStr),
               price > 1
         else {
-            SPIndicator.present(title: "Error", message: "Please, write price💅", preset: .error, haptic: .error , from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.priceIsEmpty.rawValue.localized, preset: .error, haptic: .error , from: .top)
             return
         }
         
@@ -336,22 +340,22 @@ class AddViewController: UIViewController {
     }
     
     private func addPostWithoutDescription(closure: @escaping (() -> ())) {
-        let alertVC = UIAlertController(title: "There is no description", message: "Do you want to create post without description?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+        let alertVC = UIAlertController(title: Localization.Alert.Controller.Title.descriptionIsEmpty.rawValue.localized, message: Localization.Alert.Controller.Message.createPostWithoutDescription.rawValue.localized, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: Localization.Alert.Action.yes.rawValue, style: .default) { _ in
             closure()
         }
-        let noAction = UIAlertAction(title: "No", style: .destructive)
+        let noAction = UIAlertAction(title: Localization.Alert.Action.no.rawValue.localized, style: .destructive)
         alertVC.addAction(yesAction)
         alertVC.addAction(noAction)
         self.present(alertVC, animated: true)
     }
     
     private func addPostWithoutPhoto(closure: @escaping (() -> ())) {
-        let alertVC = UIAlertController(title: "There is no photo", message: "Do you want to create post without photo?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+        let alertVC = UIAlertController(title: Localization.Alert.Controller.Title.photoIsEmpty.rawValue.localized, message: Localization.Alert.Controller.Message.createPostWithoutPhoto.rawValue.localized, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: Localization.Alert.Action.yes.rawValue.localized, style: .default) { _ in
             closure()
         }
-        let noAction = UIAlertAction(title: "No", style: .destructive)
+        let noAction = UIAlertAction(title: Localization.Alert.Action.no.rawValue, style: .destructive)
         alertVC.addAction(yesAction)
         alertVC.addAction(noAction)
         self.present(alertVC, animated: true)
@@ -364,13 +368,13 @@ class AddViewController: UIViewController {
             let path = "images/\(email)-\(name.toUnixFilename).png"
             let photoRef = storageRef.child(path)
             guard let photoData = photo.pngData() else {
-                SPIndicator.present(title: "Error", message: "Error during photo processing", preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: Localization.Indicator.Message.errorPhotoProcessing.rawValue.localized, preset: .error, haptic: .error, from: .top)
                 return
             }
             
             photoRef.putData(photoData) { _, error in
                 if let error {
-                    SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                    SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                 } else {
                     closure(path)
                 }
@@ -396,9 +400,9 @@ class AddViewController: UIViewController {
             "totalNumberOfRooms": totalNumberOfRooms
         ]) { error in
             if let error {
-                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
-                SPIndicator.present(title: "Success", message: "Post successfully created", preset: .done, haptic: .success, from: .top)
+                SPIndicator.present(title: Localization.Indicator.Title.success.localized, message: Localization.Indicator.Message.postCreatedSuccessfully.rawValue.localized, preset: .done, haptic: .success, from: .top)
             }
         }
     }
@@ -420,9 +424,9 @@ class AddViewController: UIViewController {
             "totalNumberOfRooms": totalNumberOfRooms
         ]) { error in
             if let error {
-                SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.Indicator.Title.error.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
-                SPIndicator.present(title: "Success", message: "Post successfully edited", preset: .done, haptic: .success, from: .top)
+                SPIndicator.present(title: Localization.Indicator.Title.success.localized, message: Localization.Indicator.Message.postEditedSuccessfully.rawValue.localized, preset: .done, haptic: .success, from: .top)
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -433,7 +437,6 @@ extension AddViewController: UIImagePickerControllerDelegate & UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         guard let image = info[.originalImage] as? UIImage else {
-            print("No image found")
             return
         }
 

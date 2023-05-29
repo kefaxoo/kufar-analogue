@@ -106,6 +106,8 @@
 		70D4570629FD718E0014C3A0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		70D4570829FD7CB50014C3A0 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
+		9406EB902A1FCB98003B80DD /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Main.strings; sourceTree = "<group>"; };
+		9406EB912A1FCB98003B80DD /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +393,7 @@
 				en,
 				Base,
 				ru,
+				be,
 			);
 			mainGroup = 70A472B329E87F6500315611;
 			packageReferences = (
@@ -465,6 +468,7 @@
 			children = (
 				70096B3A2A155D1300A0400A /* en */,
 				70096B3C2A155D1600A0400A /* ru */,
+				9406EB912A1FCB98003B80DD /* be */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -474,6 +478,7 @@
 			children = (
 				70A472C629E87F6500315611 /* Base */,
 				70096B362A155CE500A0400A /* ru */,
+				9406EB902A1FCB98003B80DD /* be */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -1,10 +1,61 @@
-/* 
-  Localizable.strings
-  kufar-analogue
 
-  Created by Bahdan Piatrouski on 17.05.23.
-  
-*/
-
-"tabBar.profile" = "Profile";
-"tabBar.add" = "Add";
+"tabBar.profile" = "profile";
+"tabBar.add" = "add";
+"navigationBar.settings" = "settings";
+"navigationBar.signOut" = "sign out";
+"navigationBar.signIn" = "sign in";
+"label.totalNumberOfRooms" = "total rooms";
+"button.menu.action.combinedBathroom" = "combi ";
+"button.menu.action.separatedBathroom" = "separate ";
+"button.menu.action.glazedBalcon" = "glazed";
+"button.menu.action.nonGlazedBalcon" = "non glazed";
+"button.menu.action.takePhoto" = "take photo";
+"button.menu.action.openGallery" = "open gallery";
+"button.title.addPost" = "add advert";
+"button.title.editPost" = "edit advert";
+"indicator.title.error" = "Error";
+"indicator.title.success" = "Success";
+"indicator.title.resetPasswordMessageWasSent" = "password sent";
+"indicator.message.userDoesntExist" = "user doesn't exist";
+"indicator.message.userDoesntHaveEmail" = "user doesn't have email";
+"indicator.message.nameIsEmpty" = "name is empty";
+"indicator.message.phoneNumberIsEmpty" = "phote number is empty";
+"indicator.message.totalNumberOfRoomsIsEmpty" = "field (total rooms) is empty";
+"indicator.message.numberOfFloorsIsEmpty" = "fiel (numbers floors) is empty";
+"indicator.message.totalAreaIsEmpt" = "total area is empty";
+"indicator.message.bathroomTypeIsntSelected" = "select bathroom type";
+"indicator.message.balconyTypeIsntSelected" = "select balcony type";
+"indicator.message.priceIsEmpty" = "price is empty";
+"indicator.message.errorPhotoProcessing" = "error photo processing";
+"indicator.message.postCreatedSuccessfully" = "ad created";
+"indicator.message.postEditedSuccessfully" = "ad edit";
+"indicator.message.emailIsEmpty" = "email is empty";
+"indicator.message.passwordIsEmpty" = "password is empty";
+"indicator.message.verifyEmail" = "verify email";
+"alert.controller.title.descriptionIsEmpty" = "description is empty";
+"alert.controller.title.photoIsEmpty" = "photo is empty";
+"alert.controller.message.createPostWithoutDescription" = "create ad without description?";
+"alert.contoller.message.createPostWithoutPhoto" = "create without photo?";
+"alert.action.yes" = "yes";
+"alert.action.no" = "no";
+"action.combinedBathroom" = "combined bathroom";
+"action.separateBathroom" = "separate bathroom";
+"action.glazedBalcon" = "glazed balcone";
+"action.nonGlazedBalcon" = "don't glazed balcone";
+"action.takePhoto" = "take photo";
+"action.openGalerry" = "open gallery";
+"textField.placeholder.typeSomething" = "type something";
+"words.name" = "name";
+"words.password" = "password";
+"label.userSetting" = "user setting";
+"label.emptyProfile" = "empty profile";
+"button.title.delete" = "delete ad";
+"button.title.saveChanges" = "save Changes";
+"alert.controller.title.saveChanges" = "save changes";
+"indicator.message.plsCheckUrEmailForConfirmNewEmail" = "confirm new email";
+"indicator.message.passwordHasLess" = "password has less";
+"indicator.LogInToChangeProfile" = "log in to change profile";
+"indicator.title.emailIsEmpty" = "email is empty";
+"indicator.title.passwordIsEmpty" = "password is empty";
+"indicator.title.verificationSent" = "verification sent";
+"contexAction.edit" = "edit";

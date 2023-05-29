@@ -14,6 +14,12 @@ class UserSettingsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+
+    @IBOutlet weak var userSettingNameLabel: UILabel!
+    @IBOutlet weak var userSettingEmailLabel: UILabel!
+    @IBOutlet weak var userSettingPasswordLabel: UILabel!
+    
+    @IBOutlet weak var saveChangesButton: UIButton!
     
     weak var delegate: ViewControllerDelegate?
     
@@ -28,21 +34,34 @@ class UserSettingsViewController: UIViewController {
             
             emailTextField.text = email
         } else {
-            // TODO: handle error with the help of SPIndicator
-            // and dismiss
-            SPIndicator.present(title: "Please login🥹",message: "Log in to change your profile", preset: .error, haptic: .error, from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.plsLogin.rawValue.localized,message: Localization.Indicator.Message.LogInToChangeProfile.rawValue.localized, preset: .error, haptic: .error, from: .top)
+             
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    private func setupLocalization (){
+        userSettingNameLabel.text = Localization.Words.name.rawValue.localized
+        userSettingEmailLabel.text = Localization.Words.email.rawValue.localized
+        userSettingPasswordLabel.text = Localization.Words.password.rawValue.localized
+        
+        nameTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.name.rawValue.localized)
+        emailTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: "email")
+        passwordTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.password.rawValue.localized)
+        // MARK: -
+        // NOTE: No localization
+        saveChangesButton.setTitle(Localization.Button.Title.saveChanges.rawValue.localized, for:.normal )
     }
     
     @IBAction func saveChangesAction(_ sender: Any) {
         guard let name = nameTextField.text,
               let email = emailTextField.text,
               let password = passwordTextField.text
+                
         else { return }
         
-        let alertVC = UIAlertController(title: "Save changes?", message: "Are you sure to make changes?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+        let alertVC = UIAlertController(title: Localization.Alert.Controller.Title.saveChanges.rawValue.localized, message: Localization.Alert.Controller.Message.areYouSureToMakeChanges.rawValue.localized, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: Localization.Alert.Action.yes.rawValue.localized, style: .default) { _ in
             if let user = Auth.auth().currentUser {
                 let changeProfileRequest = user.createProfileChangeRequest()
                 changeProfileRequest.displayName = name
@@ -50,9 +69,9 @@ class UserSettingsViewController: UIViewController {
                    emailDb != email {
                     user.updateEmail(to: email) { error in
                         if let error {
-                            SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                            SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                         } else {
-                            SPIndicator.present(title: "Success", message: "Please check your email for confirm new email", preset: .done, haptic: .success, from: .top)
+                            SPIndicator.present(title: Localization.Indicator.Title.success.rawValue.localized, message: Localization.Indicator.Message.plsCheckUrEmailForConfirmNewEmail.rawValue.localized, preset: .done, haptic: .success, from: .top)
                         }
                         
                         self.navigationController?.popViewController(animated: true)
@@ -62,16 +81,16 @@ class UserSettingsViewController: UIViewController {
                 if password.count > 5 {
                     user.updatePassword(to: password)
                 } else {
-                    SPIndicator.present(title: "Error", message: "Password has less than 6 symbols", preset: .error, haptic: .error, from: .top)
+                    SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: Localization.Indicator.Message.passwordHasLess.rawValue.localized, preset: .error, haptic: .error, from: .top)
                     self.navigationController?.popViewController(animated: true)
                     return
                 }
                 
                 changeProfileRequest.commitChanges { error in
                     if let error {
-                        SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                        SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
                     } else {
-                        SPIndicator.present(title: "Success", message: "Please check your email for confirm new email", preset: .done, haptic: .success, from: .top)
+                        SPIndicator.present(title: Localization.Indicator.Title.success.rawValue.localized, message: Localization.Indicator.Message.plsCheckUrEmailForConfirmNewEmail.rawValue.localized, preset: .done, haptic: .success, from: .top)
                     }
                     
                     self.navigationController?.popViewController(animated: true)
@@ -80,7 +99,7 @@ class UserSettingsViewController: UIViewController {
         }
         
         alertVC.addAction(yesAction)
-        let noAction = UIAlertAction(title: "NO", style: .destructive) { _ in
+        let noAction = UIAlertAction(title: Localization.Alert.Action.no.rawValue.localized, style: .destructive) { _ in
             self.navigationController?.popViewController(animated: true)
         }
         
