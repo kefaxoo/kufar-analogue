@@ -25,8 +25,8 @@ class UserViewController: UIViewController {
     }
     
     private func setupLocalization() {
-        noPostLabel.text = Localization.Label.noPostLabel.rawValue.localized
-        emptyProfileLabel.text = Localization.Label.emptyProfileLabel.rawValue.localized
+        noPostLabel.text = Localization.Label.noAd.rawValue.localized
+        emptyProfileLabel.text = Localization.Label.emptyProfile.rawValue.localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,15 +40,15 @@ class UserViewController: UIViewController {
     private func configureNavBar() {
         if userType == .agent {
             self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavBar.setting.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(openLoginAction(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.settings.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(openLoginAction(_:)))
         }
     }
     
     private func updateUserInfo() {
         if let user = Auth.auth().currentUser {
             emptyProfileLabel.isHidden = true
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
             if let name = user.displayName {
                 self.navigationItem.title = name
             } else {
@@ -79,7 +79,7 @@ class UserViewController: UIViewController {
             signInVC.modalPresentationStyle = .fullScreen
             self.present(signInVC, animated: false)
         } catch let error as NSError {
-            SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+            SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
         }
     }
     
@@ -88,7 +88,7 @@ class UserViewController: UIViewController {
             guard let self = self else { return }
             
             if let error = error {
-                SPIndicator.present(title: Localization.IndicatorTitle.errorIndicator.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+                SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
                 if let user = Auth.auth().currentUser, let email = user.email {
                     querySnapshot?.documents.forEach { document in
@@ -138,7 +138,7 @@ extension UserViewController: UITableViewDataSource {
 }
 
 extension UserViewController: UITableViewDelegate {
-    /*
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
               let post = cell.post else { return }
@@ -150,11 +150,11 @@ extension UserViewController: UITableViewDelegate {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    */
+    
+    
    
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   // func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
               let post = cell.post else { return }
         
@@ -170,14 +170,14 @@ extension UserViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let trash = UIContextualAction(style: .destructive,
-                                       title: Localization.Label.trashBtnLabel.rawValue.localized) { [weak self] (action, view, completionHandler) in
-            self?.handleMoveToTrash()
+                                       title: Localization.Button.Title.deleteAd.rawValue.localized) { [weak self] (action, view, completionHandler) in
+            self?.handleMoveToTrash(indexPath: indexPath)
             completionHandler(true)
         }
         trash.backgroundColor = .systemRed
         
         let unread = UIContextualAction(style: .normal,
-                                        title: Localization.Label.editBtnLabel.rawValue.localized) { [weak self] (action, view, completionHandler) in
+                                        title: Localization.ContextualAction.Title.edit.rawValue.localized) { [weak self] (action, view, completionHandler) in
             guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
                   let post = cell.post else {
                 completionHandler(false)
@@ -204,7 +204,9 @@ extension UserViewController: UITableViewDelegate {
         
     }
     
-    private func handleMoveToTrash() {
+    private func handleMoveToTrash(indexPath: IndexPath) {
+        self.posts.remove(at: indexPath.row)
+        self.postsTableView.reloadData()
         
     }
     
