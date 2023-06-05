@@ -53,11 +53,11 @@ class AddViewController: UIViewController {
     }
     
     private func setupLocalization() {
-        nameTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.name.rawValue.localized)
-        totalNumberOfRoomsLabel.text = Localization.Label.totalNumebrOfRooms.rawValue.localized
+        phoneTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.phoneNumber.rawValue.localized)
     }
     
     private func setupInterface() {
+        setupLocalization()
         photoView.layer.borderColor = UIColor.label.withAlphaComponent(0.3).cgColor
         photoView.layer.borderWidth = 2
         photoView.layer.cornerRadius = 8

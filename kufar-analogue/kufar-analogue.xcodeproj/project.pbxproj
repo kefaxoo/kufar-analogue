@@ -23,6 +23,7 @@
 		707E64E42A117CB50038CA7F /* PostControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E32A117CB50038CA7F /* PostControllerType.swift */; };
 		707E64E62A117EAD0038CA7F /* TypesForPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E52A117EAD0038CA7F /* TypesForPost.swift */; };
 		707E64E82A11808C0038CA7F /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E72A11808C0038CA7F /* UserType.swift */; };
+		70A471E72A2E030D00E5592E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A471E62A2E030D00E5592E /* UserModel.swift */; };
 		70A472C029E87F6500315611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472BF29E87F6500315611 /* AppDelegate.swift */; };
 		70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472C129E87F6500315611 /* SceneDelegate.swift */; };
 		70A472C729E87F6500315611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A472C529E87F6500315611 /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		707E64E32A117CB50038CA7F /* PostControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostControllerType.swift; sourceTree = "<group>"; };
 		707E64E52A117EAD0038CA7F /* TypesForPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesForPost.swift; sourceTree = "<group>"; };
 		707E64E72A11808C0038CA7F /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
+		70A471E62A2E030D00E5592E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		70A472BC29E87F6500315611 /* kufar-analogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kufar-analogue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A472BF29E87F6500315611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70A472C129E87F6500315611 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				706988572A11707700695ED5 /* PostModel.swift */,
+				70A471E62A2E030D00E5592E /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				70A4731C29E8870800315611 /* SignViewController.swift in Sources */,
 				707E64E42A117CB50038CA7F /* PostControllerType.swift in Sources */,
 				70A4731729E883A200315611 /* UserViewController.swift in Sources */,
+				70A471E72A2E030D00E5592E /* UserModel.swift in Sources */,
 				70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */,
 				7016B84B29E9E4730083AC08 /* UserSettingsViewController.swift in Sources */,
 				70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */,

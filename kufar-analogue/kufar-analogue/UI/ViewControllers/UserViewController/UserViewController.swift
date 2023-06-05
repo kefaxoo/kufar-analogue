@@ -38,21 +38,24 @@ class UserViewController: UIViewController {
     }
     
     private func configureNavBar() {
+        self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
+        
         if userType == .agent {
-            self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.settings.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(openLoginAction(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(openSettingsAction(_:)))
         }
     }
     
     private func updateUserInfo() {
         if let user = Auth.auth().currentUser {
             emptyProfileLabel.isHidden = true
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
-            if let name = user.displayName {
-                self.navigationItem.title = name
-            } else {
-                self.navigationItem.title = user.email
+            
+            if userType == .agent {
+                if let name = user.displayName {
+                    self.navigationItem.title = name
+                } else {
+                    self.navigationItem.title = user.email
+                }
             }
         }
     }
@@ -75,7 +78,7 @@ class UserViewController: UIViewController {
     @objc private func signOutAccount(_ sender: UIBarButtonItem) {
         do {
             try Auth.auth().signOut()
-            let signInVC = SignViewController(nibName: SignViewController.id, bundle: nil)
+            let signInVC = SignViewController(nibName: SignViewController.id, bundle: nil).configureNavigationController()
             signInVC.modalPresentationStyle = .fullScreen
             self.present(signInVC, animated: false)
         } catch let error as NSError {
@@ -90,19 +93,22 @@ class UserViewController: UIViewController {
             if let error = error {
                 SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
-                if let user = Auth.auth().currentUser, let email = user.email {
+                if self.userType == .agent,
+                   let user = Auth.auth().currentUser,
+                   let email = user.email {
                     querySnapshot?.documents.forEach { document in
                         guard let creatorEmail = document.data()["creatorEmail"] as? String else { return }
                         
-                        if creatorEmail == email, let post = PostModel(JSON: document.data()) {
+                        if creatorEmail == email,
+                           let post = PostModel(JSON: document.data()) {
                             self.posts.append(post)
                         }
                     }
-                } else {
-                    querySnapshot?.documents.forEach { document in
-                        if let post = PostModel(JSON: document.data()) {
-                            self.posts.append(post)
-                        }
+                } else if self.userType == .user {
+                    querySnapshot?.documents.forEach{ document in
+                        guard let post = PostModel(JSON: document.data()) else { return }
+                        
+                        self.posts.append(post)
                     }
                 }
                 
@@ -140,21 +146,6 @@ extension UserViewController: UITableViewDataSource {
 extension UserViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
-              let post = cell.post else { return }
-        
-        if userType == .agent {
-            let editPostVC = AddViewController(nibName: AddViewController.id, bundle: nil)
-            editPostVC.set(post)
-            self.navigationController?.pushViewController(editPostVC, animated: true)
-        }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    
-    
-   
-    
-   // func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
               let post = cell.post else { return }
         

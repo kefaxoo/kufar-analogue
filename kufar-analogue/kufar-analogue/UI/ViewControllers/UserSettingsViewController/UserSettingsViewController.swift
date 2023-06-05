@@ -33,6 +33,7 @@ class UserSettingsViewController: UIViewController {
             guard let email = user.email else { return }
             
             emailTextField.text = email
+            setupLocalization()
         } else {
             SPIndicator.present(title: Localization.Indicator.Title.plsLogin.rawValue.localized,message: Localization.Indicator.Message.LogInToChangeProfile.rawValue.localized, preset: .error, haptic: .error, from: .top)
              
@@ -40,17 +41,15 @@ class UserSettingsViewController: UIViewController {
         }
     }
     
-    private func setupLocalization (){
+    private func setupLocalization() {
         userSettingNameLabel.text = Localization.Words.name.rawValue.localized
         userSettingEmailLabel.text = Localization.Words.email.rawValue.localized
         userSettingPasswordLabel.text = Localization.Words.password.rawValue.localized
         
         nameTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.name.rawValue.localized)
-        emailTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: "email")
+        emailTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.email.rawValue.localized)
         passwordTextField.placeholder = Localization.TextField.Placeholder.typeSomething.rawValue.localizedWithParameter(text: Localization.Words.password.rawValue.localized)
-        // MARK: -
-        // NOTE: No localization
-        saveChangesButton.setTitle(Localization.Button.Title.saveChanges.rawValue.localized, for:.normal )
+        saveChangesButton.setTitle(Localization.Button.Title.saveChanges.rawValue.localized, for: .normal)
     }
     
     @IBAction func saveChangesAction(_ sender: Any) {

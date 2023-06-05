@@ -1,61 +1,186 @@
 
-"tabBar.profile" = "профиль";
-"tabBar.add" = "добавить";
-"navigationBar.settings" = "настройки";
-"navigationBar.signOut" = "выйти";
-"navigationBar.signIn" = "войти";
-"label.totalNumberOfRooms" = "всего комнат";
-"button.menu.action.combinedBathroom" = "совмещенный";
-"button.menu.action.separatedBathroom" = "раздельный";
-"button.menu.action.glazedBalcon" = "застекленный";
-"button.menu.action.nonGlazedBalcon" = "не застекленный";
-"button.menu.action.takePhoto" = "сделать фото";
-"button.menu.action.openGallery" = "открыть галерею";
-"button.title.addPost" = "добавить обьявление";
-"button.title.editPost" = "изменить обьявление";
-"indicator.title.error" = "Ошибка";
-"indicator.title.success" = "Успешно";
-"indicator.title.resetPasswordMessageWasSent" = "пароль отправлен";
-"indicator.message.userDoesntExist" = "пользователь не существует";
-"indicator.message.userDoesntHaveEmail" = "у пользователя нет email";
-"indicator.message.nameIsEmpty" = "имя пустое";
-"indicator.message.phoneNumberIsEmpty" = "номер пустой";
-"indicator.message.totalNumberOfRoomsIsEmpty" = "поле (всего комнат) пустое";
-"indicator.message.numberOfFloorsIsEmpty" = "поле (всего этажей) пустое";
-"indicator.message.totalAreaIsEmpt" = "общая площадь пустая";
-"indicator.message.bathroomTypeIsntSelected" = "выберите тип санузла";
-"indicator.message.balconyTypeIsntSelected" = "выберите тип балкона";
-"indicator.message.priceIsEmpty" = "заполните цену";
-"indicator.message.errorPhotoProcessing" = "ошибка обработки фото";
-"indicator.message.postCreatedSuccessfully" = "обьявление создано";
-"indicator.message.postEditedSuccessfully" = "обьявление изменено";
-"indicator.message.emailIsEmpty" = "email пустой";
-"indicator.message.passwordIsEmpty" = "пароль пустой";
-"indicator.message.verifyEmail" = "подтвердите email";
-"alert.controller.title.descriptionIsEmpty" = "описание пустое";
-"alert.controller.title.photoIsEmpty" = "нет фото";
-"alert.controller.message.createPostWithoutDescription" = "создать без описания?";
-"alert.contoller.message.createPostWithoutPhoto" = "создать без фото?";
-"alert.action.yes" = "да";
-"alert.action.no" = "нет";
+
 "action.combinedBathroom" = "совмещенный санузел";
-"action.separateBathroom" = "раздельный санузел";
+
+
 "action.glazedBalcon" = "застекленный балкон";
+
+
 "action.nonGlazedBalcon" = "не застекленный балкон";
-"action.takePhoto" = "сделать фото";
+
+
 "action.openGalerry" = "открыть галерею";
-"textField.placeholder.typeSomething" = "напишите что-нибудь";
-"words.name" = "имя";
-"words.password" = "пароль";
-"label.userSetting" = "настройки ";
-"label.emptyProfile" = "пустой профиль";
-"button.title.delete" = "удалить обьявление";
-"button.title.saveChanges" = "сохранить настройки";
+
+
+"action.separateBathroom" = "раздельный санузел";
+
+
+"action.takePhoto" = "сделать фото";
+
+
+"alert.action.no" = "нет";
+
+
+"alert.action.yes" = "да";
+
+
+"alert.contoller.message.createPostWithoutPhoto" = "создать без фото?";
+
+
+"alert.controller.message.createPostWithoutDescription" = "создать без описания?";
+
+
+"alert.controller.title.descriptionIsEmpty" = "описание пустое";
+
+
+"alert.controller.title.photoIsEmpty" = "нет фото";
+
+
 "alert.controller.title.saveChanges" = "сохранить изменения";
-"indicator.message.plsCheckUrEmailForConfirmNewEmail" = "подтвердите новый email";
-"indicator.message.passwordHasLess" = "маленький пароль";
-"indicator.LogInToChangeProfile" = "зайдите, чтобы изменить профиль";
-"indicator.title.emailIsEmpty" = "email пустой";
-"indicator.title.passwordIsEmpty" = "пароль пустой";
-"indicator.title.verificationSent" = "Подтверждение отправлено";
+
+
+"button.menu.action.combinedBathroom" = "совмещенный";
+
+
+"button.menu.action.glazedBalcon" = "застекленный";
+
+
+"button.menu.action.nonGlazedBalcon" = "не застекленный";
+
+
+"button.menu.action.openGallery" = "открыть галерею";
+
+
+"button.menu.action.separatedBathroom" = "раздельный";
+
+
+"button.menu.action.takePhoto" = "сделать фото";
+
+
+"button.title.addPost" = "добавить обьявление";
+
+
+"button.title.delete" = "удалить обьявление";
+
+
+"button.title.editPost" = "изменить обьявление";
+
+
+"button.title.saveChanges" = "сохранить настройки";
+
+
 "contexAction.edit" = "редактировать";
+
+
+"indicator.LogInToChangeProfile" = "зайдите, чтобы изменить профиль";
+
+
+"indicator.message.balconyTypeIsntSelected" = "выберите тип балкона";
+
+
+"indicator.message.bathroomTypeIsntSelected" = "выберите тип санузла";
+
+
+"indicator.message.emailIsEmpty" = "email пустой";
+
+
+"indicator.message.errorPhotoProcessing" = "ошибка обработки фото";
+
+
+"indicator.message.nameIsEmpty" = "имя пустое";
+
+
+"indicator.message.numberOfFloorsIsEmpty" = "поле (всего этажей) пустое";
+
+
+"indicator.message.passwordHasLess" = "маленький пароль";
+
+
+"indicator.message.passwordIsEmpty" = "пароль пустой";
+
+
+"indicator.message.phoneNumberIsEmpty" = "номер пустой";
+
+
+"indicator.message.plsCheckUrEmailForConfirmNewEmail" = "подтвердите новый email";
+
+
+"indicator.message.postCreatedSuccessfully" = "обьявление создано";
+
+
+"indicator.message.postEditedSuccessfully" = "обьявление изменено";
+
+
+"indicator.message.priceIsEmpty" = "заполните цену";
+
+
+"indicator.message.totalAreaIsEmpt" = "общая площадь пустая";
+
+
+"indicator.message.totalNumberOfRoomsIsEmpty" = "поле (всего комнат) пустое";
+
+
+"indicator.message.userDoesntExist" = "пользователь не существует";
+
+
+"indicator.message.userDoesntHaveEmail" = "у пользователя нет email";
+
+
+"indicator.message.verifyEmail" = "подтвердите email";
+
+
+"indicator.title.emailIsEmpty" = "email пустой";
+
+
+"indicator.title.error" = "Ошибка";
+
+
+"indicator.title.passwordIsEmpty" = "пароль пустой";
+
+
+"indicator.title.resetPasswordMessageWasSent" = "пароль отправлен";
+
+
+"indicator.title.success" = "Успешно";
+
+
+"indicator.title.verificationSent" = "Подтверждение отправлено";
+
+
+"label.emptyProfile" = "пустой профиль";
+
+
+"label.totalNumberOfRooms" = "всего комнат";
+
+
+"label.userSetting" = "настройки ";
+
+
+"navigationBar.settings" = "настройки";
+
+
+"navigationBar.signIn" = "войти";
+
+
+"navigationBar.signOut" = "выйти";
+
+
+"tabBar.add" = "добавить";
+
+
+"tabBar.profile" = "профиль";
+
+
+"textField.placeholder.typeSomething" = "напишите %s";
+
+/*  */
+"words.email" = "электронная почта";
+
+
+"words.name" = "имя";
+
+
+"words.password" = "пароль";
+
+/*  */
+"words.phoneNumber" = "номер телефона";

@@ -117,6 +117,7 @@ enum Localization {
         case name = "words.name"
         case email = "words.email"
         case password = "words.password"
+        case phoneNumber = "words.phoneNumber"
     }
 }
 
