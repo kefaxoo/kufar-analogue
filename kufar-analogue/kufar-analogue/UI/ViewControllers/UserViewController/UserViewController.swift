@@ -1,10 +1,3 @@
-//
-//  UserViewController.swift
-//  kufar-analogue
-//
-//  Created by Bahdan Piatrouski on 13.04.23.
-//
-
 import UIKit
 import FirebaseAuth
 import SPIndicator
@@ -12,7 +5,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class UserViewController: UIViewController {
-
+    
     @IBOutlet weak var emptyProfileLabel: UILabel!
     @IBOutlet weak var postsTableView: UITableView!
     @IBOutlet weak var noPostLabel: UILabel!
@@ -23,28 +16,96 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
+        setupLocalization()
         updateUserInfo()
         postsTableView.dataSource = self
         postsTableView.delegate = self
         postsTableView.register(PostTableViewCell.self)
-        Firestore.firestore().collection("posts").getDocuments { querySnaphot, error in
-            if error != nil {
-                // MARK: -
-                // TODO: Display indicator
+        fetchPosts()
+    }
+    
+    private func setupLocalization() {
+        noPostLabel.text = Localization.Label.noAd.rawValue.localized
+        emptyProfileLabel.text = Localization.Label.emptyProfile.rawValue.localized
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateUserInfo()
+    }
+    
+   public func set(_ type: UserType) {
+        self.userType = type
+    }
+    
+    private func configureNavBar() {
+        self.navigationController?.navigationBar.tintColor = UIColor.systemGreen
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
+        
+        if userType == .agent {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.settings.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
+        }
+    }
+    
+    private func updateUserInfo() {
+        if let user = Auth.auth().currentUser {
+            emptyProfileLabel.isHidden = true
+            
+            if userType == .agent {
+                if let name = user.displayName {
+                    self.navigationItem.title = name
+                } else {
+                    self.navigationItem.title = user.email
+                }
+            }
+        }
+    }
+    
+    @objc private func openSettingsAction(_ sender: UIBarButtonItem) {
+        let userSettingsVC = UserSettingsViewController(nibName: nil, bundle: nil)
+        userSettingsVC.delegate = self
+        userSettingsVC.navigationItem.title = Localization.Label.userSetting.rawValue.localized
+        self.navigationController?.pushViewController(userSettingsVC, animated: true)
+    }
+    
+    @objc private func openLoginAction(_ sender: UIBarButtonItem) {
+        let signVC = SignViewController(nibName: SignViewController.id, bundle: nil)
+        signVC.delegate = self
+        let navSignVC = signVC.configureNavigationController()
+        
+        present(navSignVC, animated: true)
+    }
+    
+    @objc private func signOutAccount(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+            let signInVC = SignViewController(nibName: SignViewController.id, bundle: nil).configureNavigationController()
+            signInVC.modalPresentationStyle = .fullScreen
+            self.present(signInVC, animated: false)
+        } catch let error as NSError {
+            SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
+        }
+    }
+    
+    private func fetchPosts() {
+        Firestore.firestore().collection("posts").getDocuments { [weak self] querySnapshot, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                SPIndicator.present(title: Localization.Indicator.Title.error.rawValue.localized, message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
             } else {
-                if let user = Auth.auth().currentUser,
+                if self.userType == .agent,
+                   let user = Auth.auth().currentUser,
                    let email = user.email {
-                    querySnaphot!.documents.forEach { document in
+                    querySnapshot?.documents.forEach { document in
                         guard let creatorEmail = document.data()["creatorEmail"] as? String else { return }
                         
-                        if creatorEmail == email {
-                            guard let post = PostModel(JSON: document.data()) else { return }
-                            
+                        if creatorEmail == email,
+                           let post = PostModel(JSON: document.data()) {
                             self.posts.append(post)
                         }
                     }
-                } else {
-                    querySnaphot!.documents.forEach { document in
+                } else if self.userType == .user {
+                    querySnapshot?.documents.forEach{ document in
                         guard let post = PostModel(JSON: document.data()) else { return }
                         
                         self.posts.append(post)
@@ -56,60 +117,6 @@ class UserViewController: UIViewController {
                     self.noPostLabel.isHidden = false
                 }
             }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        updateUserInfo()
-    }
-    
-    func set(_ type: UserType) {
-        self.userType = type
-    }
-    
-    private func configureNavBar() {
-        if userType == .agent {
-            self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(openSettingsAction(_:)))
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign in", style: .plain, target: self, action: #selector(openLoginAction(_:)))
-        }
-    }
-    
-    private func updateUserInfo() {
-        if let user = Auth.auth().currentUser {
-            emptyProfileLabel.isHidden = true
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(signOutAccount(_:)))
-            if let name = user.displayName {
-                self.navigationItem.title = name
-            } else {
-                self.navigationItem.title = user.email
-            }
-        }
-    }
-    
-    @objc private func openSettingsAction(_ sender: UIBarButtonItem) {
-        let userSettingsVC = UserSettingsViewController(nibName: nil, bundle: nil)
-        userSettingsVC.delegate = self
-        userSettingsVC.navigationItem.title = "User settings"
-        self.navigationController?.pushViewController(userSettingsVC, animated: true)
-    }
-    
-    @objc private func openLoginAction(_ sender: UIBarButtonItem) {
-        let signVC = SignViewController(nibName: SignViewController.id, bundle: nil)
-        signVC.delegate = self
-        let navSignVC = signVC.configureNavigationController()
-        
-        present(navSignVC, animated: true)
-    }
-
-    @objc private func signOutAccount(_ sender: UIBarButtonItem) {
-        do {
-            try Auth.auth().signOut()
-            let signInVC = SignViewController(nibName: SignViewController.id, bundle: nil)
-            signInVC.modalPresentationStyle = .fullScreen
-            self.present(signInVC, animated: false)
-        } catch let error as NSError {
-            SPIndicator.present(title: "Error", message: error.localizedDescription, preset: .error, haptic: .error, from: .top)
         }
     }
 }
@@ -127,76 +134,75 @@ extension UserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath)
-        guard let postCell = cell as? PostTableViewCell else { return cell }
         
-        postCell.set(posts[indexPath.row])
-        return postCell
-    }
-    
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        if Auth.auth().currentUser != nil {
-            guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
-                  let post = cell.post
-            else {
-                // MARK: -
-                // TODO: Display indicator
-                return nil
-            }
-            
-            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { sugesstedActions in
-                let deleteAction = UIAction(title: "Delete post", image: UIImage(systemName: "trash.slash.fill"), attributes: .destructive) { _ in
-                    let db = Firestore.firestore()
-                    let id = "\(post.email)-\(post.name.toUnixFilename)"
-                    db.collection("posts").document(id).delete { error in
-                        if error != nil {
-                            // MARK: -
-                            // TODO: Display indicator
-                        } else {
-                            if !post.imageUrl.isEmpty {
-                                let storage = Storage.storage()
-                                let storageRef = storage.reference()
-                                let path = post.imageUrl
-                                let photoRef = storageRef.child(path)
-                                photoRef.delete { error in
-                                    if error != nil {
-                                        // MARK: -
-                                        // TODO: Display indicator
-                                    } else {
-                                        SPIndicator.present(title: "Success delete post", preset: .done, haptic: .success, from: .top)
-                                        self.postsTableView.reloadData()
-                                    }
-                                }
-                            } else {
-                                SPIndicator.present(title: "Success delete post", preset: .done, haptic: .success, from: .top)
-                                self.postsTableView.reloadData()
-                            }
-                        }
-                    }
-                    
-                    
-                }
-                
-                return UIMenu(options: .displayInline, children: [deleteAction])
-            }
+        if let postCell = cell as? PostTableViewCell {
+            postCell.set(posts[indexPath.row])
         }
         
-        return nil
+        return cell
     }
 }
 
 extension UserViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath),
-              let postCell = cell as? PostTableViewCell,
-              let post = postCell.post
-        else { return }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
+              let post = cell.post else { return }
+        
         if userType == .agent {
-            let editPostVC = AddViewController(nibName: AddViewController.id, bundle: nil)
-            editPostVC.set(post)
-            self.navigationController?.pushViewController(editPostVC, animated: true)
+            let infoVC = InformationViewController(nibName: "InformationViewController", bundle: nil)
+            infoVC.set(post: post)
+            self.navigationController?.pushViewController(infoVC, animated: true)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let trash = UIContextualAction(style: .destructive,
+                                       title: Localization.Button.Title.deleteAd.rawValue.localized) { [weak self] (action, view, completionHandler) in
+            self?.handleMoveToTrash(indexPath: indexPath)
+            completionHandler(true)
+        }
+        trash.backgroundColor = .systemRed
+        
+        let unread = UIContextualAction(style: .normal,
+                                        title: Localization.ContextualAction.Title.edit.rawValue.localized) { [weak self] (action, view, completionHandler) in
+            guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell,
+                  let post = cell.post else {
+                completionHandler(false)
+                return
+            }
+            
+            let editPostVC = AddViewController(nibName: AddViewController.id, bundle: nil)
+            editPostVC.set(post)
+            self?.navigationController?.pushViewController(editPostVC, animated: true)
+            
+            completionHandler(true)
+        }
+        
+        unread.backgroundColor = .systemOrange
+        
+        let configuration = UISwipeActionsConfiguration(actions: [trash, unread])
+      //  configuration.performsFirstActionWithFullSwipe = false
+        
+        return configuration
+    }
+    
+    
+    private func handleMarkAsUnread() {
+        
+    }
+    
+    private func handleMoveToTrash(indexPath: IndexPath) {
+        self.posts.remove(at: indexPath.row)
+        self.postsTableView.reloadData()
+        
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
     }
 }

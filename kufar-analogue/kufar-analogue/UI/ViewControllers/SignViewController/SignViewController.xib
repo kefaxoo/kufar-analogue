@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8TY-Yr-Du3">
-                    <rect key="frame" x="16" y="660.66666666666663" width="398" height="255.33333333333337"/>
+                    <rect key="frame" x="16" y="671" width="398" height="211"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-BH-Ye1">
                             <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
@@ -40,34 +41,29 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFj-4I-RvG">
                             <rect key="frame" x="0.0" y="88" width="398" height="34.333333333333343"/>
-                            <color key="tintColor" red="0.99837976689999997" green="0.51290434600000001" blue="0.98935621979999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Forget password?"/>
                             <connections>
                                 <action selector="forgetPasswordAction:" destination="-1" eventType="touchUpInside" id="tOh-Hn-CFR"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDy-07-qP3">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-Dm-a4b">
                             <rect key="frame" x="0.0" y="132.33333333333337" width="398" height="34.333333333333343"/>
-                            <color key="tintColor" systemColor="systemPurpleColor"/>
+                            <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="tinted" title="Sign In as guest"/>
-                            <connections>
-                                <action selector="signInAsGuestAction:" destination="-1" eventType="touchUpInside" id="2fz-6R-Z7N"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-Dm-a4b">
-                            <rect key="frame" x="0.0" y="176.66666666666674" width="398" height="34.333333333333343"/>
-                            <color key="tintColor" red="1" green="0.51235960331584729" blue="0.99858974373185971" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Sign In">
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="baseBackgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
                             <connections>
                                 <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="4of-iR-Dc6"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9x-ea-mhk">
-                            <rect key="frame" x="0.0" y="221" width="398" height="34.333333333333343"/>
-                            <color key="tintColor" red="0.99837976689999997" green="0.51290434600000001" blue="0.98935621979999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="176.66666666666663" width="398" height="34.333333333333343"/>
+                            <color key="tintColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="gray" title="Sign Up"/>
                             <connections>
@@ -77,12 +73,12 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0w-Jg-QeP">
-                    <rect key="frame" x="16" y="16" width="398" height="628.66666666666663"/>
+                    <rect key="frame" x="16" y="75" width="398" height="580"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLAT FINDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtk-l6-3jb">
-                            <rect key="frame" x="60.666666666666657" y="287" width="276.66666666666674" height="55"/>
+                            <rect key="frame" x="60.666666666666657" y="262.66666666666669" width="276.66666666666674" height="55"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
-                            <color key="textColor" red="1" green="0.51655786837005113" blue="0.99781335868611742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -118,9 +114,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

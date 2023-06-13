@@ -23,6 +23,7 @@
 		707E64E42A117CB50038CA7F /* PostControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E32A117CB50038CA7F /* PostControllerType.swift */; };
 		707E64E62A117EAD0038CA7F /* TypesForPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E52A117EAD0038CA7F /* TypesForPost.swift */; };
 		707E64E82A11808C0038CA7F /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E64E72A11808C0038CA7F /* UserType.swift */; };
+		70A471E72A2E030D00E5592E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A471E62A2E030D00E5592E /* UserModel.swift */; };
 		70A472C029E87F6500315611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472BF29E87F6500315611 /* AppDelegate.swift */; };
 		70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A472C129E87F6500315611 /* SceneDelegate.swift */; };
 		70A472C729E87F6500315611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A472C529E87F6500315611 /* Main.storyboard */; };
@@ -68,6 +69,10 @@
 		70D4570729FD718E0014C3A0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4570629FD718E0014C3A0 /* String.swift */; };
 		70D4570929FD7CB50014C3A0 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4570829FD7CB50014C3A0 /* TypeAliases.swift */; };
 		70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */; };
+		94C837E42A389F08006DCC70 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C837E32A389F08006DCC70 /* InformationViewController.swift */; };
+		94C837E62A389F22006DCC70 /* InformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C837E52A389F22006DCC70 /* InformationViewController.storyboard */; };
+		94C837E82A38A090006DCC70 /* InformationTableViewCells.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C837E72A38A090006DCC70 /* InformationTableViewCells.storyboard */; };
+		94C837EA2A38A0AA006DCC70 /* InformationTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C837E92A38A0AA006DCC70 /* InformationTableViewCells.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +93,7 @@
 		707E64E32A117CB50038CA7F /* PostControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostControllerType.swift; sourceTree = "<group>"; };
 		707E64E52A117EAD0038CA7F /* TypesForPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesForPost.swift; sourceTree = "<group>"; };
 		707E64E72A11808C0038CA7F /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
+		70A471E62A2E030D00E5592E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		70A472BC29E87F6500315611 /* kufar-analogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kufar-analogue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A472BF29E87F6500315611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70A472C129E87F6500315611 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,12 @@
 		70D4570629FD718E0014C3A0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		70D4570829FD7CB50014C3A0 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
+		9406EB902A1FCB98003B80DD /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Main.strings; sourceTree = "<group>"; };
+		9406EB912A1FCB98003B80DD /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Localizable.strings; sourceTree = "<group>"; };
+		94C837E32A389F08006DCC70 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		94C837E52A389F22006DCC70 /* InformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InformationViewController.storyboard; sourceTree = "<group>"; };
+		94C837E72A38A090006DCC70 /* InformationTableViewCells.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InformationTableViewCells.storyboard; sourceTree = "<group>"; };
+		94C837E92A38A0AA006DCC70 /* InformationTableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +192,8 @@
 			children = (
 				7069884E2A116F7500695ED5 /* PostTableViewCell.swift */,
 				7069884F2A116F7500695ED5 /* PostTableViewCell.xib */,
+				94C837E72A38A090006DCC70 /* InformationTableViewCells.storyboard */,
+				94C837E92A38A0AA006DCC70 /* InformationTableViewCells.swift */,
 			);
 			path = PostTableViewCell;
 			sourceTree = "<group>";
@@ -196,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				706988572A11707700695ED5 /* PostModel.swift */,
+				70A471E62A2E030D00E5592E /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +285,7 @@
 		70A4731429E8839300315611 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				949DA5FD2A3333A800F044CA /* InformationAboutAdViewController */,
 				7016B84829E9E45E0083AC08 /* UserSettingsViewController */,
 				70A4731929E886F700315611 /* UserViewController */,
 				70A4731E29E8871700315611 /* SignViewController */,
@@ -314,6 +330,15 @@
 				70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		949DA5FD2A3333A800F044CA /* InformationAboutAdViewController */ = {
+			isa = PBXGroup;
+			children = (
+				94C837E32A389F08006DCC70 /* InformationViewController.swift */,
+				94C837E52A389F22006DCC70 /* InformationViewController.storyboard */,
+			);
+			path = InformationAboutAdViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +416,7 @@
 				en,
 				Base,
 				ru,
+				be,
 			);
 			mainGroup = 70A472B329E87F6500315611;
 			packageReferences = (
@@ -419,6 +445,8 @@
 				706988512A116F7500695ED5 /* PostTableViewCell.xib in Resources */,
 				7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */,
 				70096B392A155D1300A0400A /* Localizable.strings in Resources */,
+				94C837E62A389F22006DCC70 /* InformationViewController.storyboard in Resources */,
+				94C837E82A38A090006DCC70 /* InformationTableViewCells.storyboard in Resources */,
 				70A472C929E87F6600315611 /* Assets.xcassets in Resources */,
 				70A472C729E87F6500315611 /* Main.storyboard in Resources */,
 				7028306629EF13370039221E /* AddViewController.xib in Resources */,
@@ -433,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C837E42A389F08006DCC70 /* InformationViewController.swift in Sources */,
 				70D4570929FD7CB50014C3A0 /* TypeAliases.swift in Sources */,
 				706988582A11707700695ED5 /* PostModel.swift in Sources */,
 				70096B402A155D7100A0400A /* Localization.swift in Sources */,
@@ -443,8 +472,10 @@
 				70A4731C29E8870800315611 /* SignViewController.swift in Sources */,
 				707E64E42A117CB50038CA7F /* PostControllerType.swift in Sources */,
 				70A4731729E883A200315611 /* UserViewController.swift in Sources */,
+				70A471E72A2E030D00E5592E /* UserModel.swift in Sources */,
 				70A472C229E87F6500315611 /* SceneDelegate.swift in Sources */,
 				7016B84B29E9E4730083AC08 /* UserSettingsViewController.swift in Sources */,
+				94C837EA2A38A0AA006DCC70 /* InformationTableViewCells.swift in Sources */,
 				70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */,
 				707E64E62A117EAD0038CA7F /* TypesForPost.swift in Sources */,
 				70096B3E2A155D3700A0400A /* Bundle.swift in Sources */,
@@ -465,6 +496,7 @@
 			children = (
 				70096B3A2A155D1300A0400A /* en */,
 				70096B3C2A155D1600A0400A /* ru */,
+				9406EB912A1FCB98003B80DD /* be */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -474,6 +506,7 @@
 			children = (
 				70A472C629E87F6500315611 /* Base */,
 				70096B362A155CE500A0400A /* ru */,
+				9406EB902A1FCB98003B80DD /* be */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
