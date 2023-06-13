@@ -16,12 +16,22 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var numberOfRoomsLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var phoneButton: UIButton!
     
     private(set) var post: PostModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        phoneButton.addTarget(self, action: #selector(callButtonTapped(_:)), for: .touchUpInside)
     }
+    
+    @IBAction func callButtonTapped(_ sender: UIButton) {
+        let phoneNumber = post?.phoneNumber // Замените на нужный вам номер телефона
+           
+        if let phoneURL = URL(string: "tel://\(String(describing: phoneNumber))"), UIApplication.shared.canOpenURL(phoneURL) {
+               UIApplication.shared.open(phoneURL, options: [:], completionHandler: nil)
+           }
+       }
     
     func set(_ post: PostModel) {
         self.post = post
@@ -42,6 +52,7 @@ class PostTableViewCell: UITableViewCell {
         nameLabel.text = post.name
         areaLabel.text = "\(post.totalArea) m2"
         numberOfRoomsLabel.text = "\(post.totalNumberOfRooms) rooms"
-        priceLabel.text = "\(post.price)k$"
+        priceLabel.text = "$\(post.price)"
+        phoneButton.setTitle(post.phoneNumber, for: .normal)
     }
 }

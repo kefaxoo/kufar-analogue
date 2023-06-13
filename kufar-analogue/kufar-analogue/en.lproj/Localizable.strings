@@ -23,12 +23,14 @@
 
 "alert.action.yes" = "yes";
 
+"alert.action.ok" = "Ok";
 
 "alert.contoller.message.createPostWithoutPhoto" = "create without photo?";
 
 
 "alert.controller.message.createPostWithoutDescription" = "create ad without description?";
 
+"alert.controller.message.verificationEmailSent" = "Verification sent to ur e-mail";
 
 "alert.controller.title.descriptionIsEmpty" = "description is empty";
 
@@ -38,6 +40,7 @@
 
 "alert.controller.title.saveChanges" = "save changes";
 
+"alert.controller.title.verificationEmailSent" = "Verification e-mail sent";
 
 "button.menu.action.combinedBathroom" = "combi ";
 
@@ -68,6 +71,9 @@
 
 "button.title.saveChanges" = "save Changes";
 
+"button.title.signIn" = "Sign In";
+
+"button.title.signUp" = "Sign Up";
 
 "contexAction.edit" = "edit";
 

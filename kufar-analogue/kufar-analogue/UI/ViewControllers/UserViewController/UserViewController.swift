@@ -33,16 +33,16 @@ class UserViewController: UIViewController {
         updateUserInfo()
     }
     
-    func set(_ type: UserType) {
+   public func set(_ type: UserType) {
         self.userType = type
     }
     
     private func configureNavBar() {
-        self.navigationController?.navigationBar.tintColor = UIColor.systemPurple
+        self.navigationController?.navigationBar.tintColor = UIColor.systemGreen
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.signOut.rawValue.localized, style: .plain, target: self, action: #selector(signOutAccount(_:)))
         
         if userType == .agent {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(openSettingsAction(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localization.NavigationBar.settings.rawValue.localized, style: .plain, target: self, action: #selector(openSettingsAction(_:)))
         }
     }
     
@@ -150,9 +150,9 @@ extension UserViewController: UITableViewDelegate {
               let post = cell.post else { return }
         
         if userType == .agent {
-            let editPostVC = AddViewController(nibName: AddViewController.id, bundle: nil)
-            editPostVC.set(post)
-            self.navigationController?.pushViewController(editPostVC, animated: true)
+            let infoVC = InformationViewController(nibName: "InformationViewController", bundle: nil)
+            infoVC.set(post: post)
+            self.navigationController?.pushViewController(infoVC, animated: true)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

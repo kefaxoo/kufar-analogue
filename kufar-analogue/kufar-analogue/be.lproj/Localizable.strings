@@ -1,132 +1,134 @@
 
 
-"action.combinedBathroom" = "сумешчаны санвузел";
+"action.combinedBathroom" = "Сумешчаны санвузел";
 
 
-"action.glazedBalcon" = "зашклёны балкон";
+"action.glazedBalcon" = "Зашклёны балкон";
 
 
-"action.nonGlazedBalcon" = "не зашклёны балкон";
+"action.nonGlazedBalcon" = "Не зашклёны балкон";
 
 
-"action.openGalerry" = "адчыніць галерэю";
+"action.openGalerry" = "Адчыніць галерэю";
 
 
-"action.separateBathroom" = "паасобны санвузел";
+"action.separateBathroom" = "Паасобны санвузел";
 
 
-"action.takePhoto" = "зрабіць фота";
+"action.takePhoto" = "Зрабіць фота";
 
 
-"alert.action.no" = "не";
+"alert.action.no" = "Не";
+
+"alert.action.yes" = "Так";
+
+"alert.action.ok" = "Добра";
+
+"alert.contoller.message.createPostWithoutPhoto" = "Стварыць без фота?";
+
+"alert.controller.message.createPostWithoutDescription" = "Стварыць без апісання?";
+
+"alert.controller.message.verificationEmailSent" = "Пацверджанне адаслана на пошту";
+
+"alert.controller.title.descriptionIsEmpty" = "Апісанне пустое";
+
+"alert.controller.title.photoIsEmpty" = "Няма фота";
+
+"alert.controller.title.saveChanges" = "Захаваць змены";
+
+"alert.controller.title.verificationEmailSent" = "Пацверджанне e-mail адпраўлена";
+
+"button.menu.action.combinedBathroom" = "Сумешчаны";
 
 
-"alert.action.yes" = "так";
+"button.menu.action.glazedBalcon" = "Зашклёны";
 
 
-"alert.contoller.message.createPostWithoutPhoto" = "стварыць без фота?";
+"button.menu.action.nonGlazedBalcon" = "Не застекленный";
 
 
-"alert.controller.message.createPostWithoutDescription" = "стварыць без апісання?";
+"button.menu.action.openGallery" = "Адчыніць галерэю";
 
 
-"alert.controller.title.descriptionIsEmpty" = "апісанне пустое";
+"button.menu.action.separatedBathroom" = "Паасобны ";
 
 
-"alert.controller.title.photoIsEmpty" = "няма фота";
+"button.menu.action.takePhoto" = "Зрабіць фота";
 
 
-"alert.controller.title.saveChanges" = "захаваць змены";
+"button.title.addPost" = "Дадать аб'яву";
 
 
-"button.menu.action.combinedBathroom" = "сумешчаны";
+"button.title.delete" = "Выдаліць аб'яву";
 
 
-"button.menu.action.glazedBalcon" = "зашклёны";
+"button.title.editPost" = "Змяніць аб'яву";
 
 
-"button.menu.action.nonGlazedBalcon" = "не застекленный";
+"button.title.saveChanges" = "Захаваць налады";
+
+"button.title.signIn" = "Увайсцi";
+
+"button.title.signUp" = "Зарэгiстрырацца";
+
+"contexAction.edit" = "Рэдагаваць";
 
 
-"button.menu.action.openGallery" = "адчыніць галерэю";
+"indicator.LogInToChangeProfile" = "Увайдзіце, каб змяніць профіль";
 
 
-"button.menu.action.separatedBathroom" = "паасобны ";
+"indicator.message.balconyTypeIsntSelected" = "Абярыце тып балкону";
 
 
-"button.menu.action.takePhoto" = "зрабіць фота";
-
-
-"button.title.addPost" = "дадать аб'яву";
-
-
-"button.title.delete" = "выдаліць аб'яву";
-
-
-"button.title.editPost" = "змяніць аб'яву";
-
-
-"button.title.saveChanges" = "захаваць налады";
-
-
-"contexAction.edit" = "рэдагаваць";
-
-
-"indicator.LogInToChangeProfile" = "увайдзіце, каб змяніць профіль";
-
-
-"indicator.message.balconyTypeIsntSelected" = "абярыце тып балкону";
-
-
-"indicator.message.bathroomTypeIsntSelected" = "абярыце тып санвузла";
+"indicator.message.bathroomTypeIsntSelected" = "Абярыце тып санвузла";
 
 
 "indicator.message.emailIsEmpty" = "email пусты";
 
 
-"indicator.message.errorPhotoProcessing" = "памылка апрацоўкі фота";
+"indicator.message.errorPhotoProcessing" = "Памылка апрацоўкі фота";
 
 
-"indicator.message.nameIsEmpty" = "імя пустое";
+"indicator.message.nameIsEmpty" = "Імя пустое";
 
 
-"indicator.message.numberOfFloorsIsEmpty" = "поле (агульна паверхаў) пустое";
+"indicator.message.numberOfFloorsIsEmpty" = "Поле (агульна паверхаў) пустое";
 
 
-"indicator.message.passwordHasLess" = "маленькі пароль";
+"indicator.message.passwordHasLess" = "Маленькі пароль";
 
 
-"indicator.message.passwordIsEmpty" = "пароль пусты";
+"indicator.message.passwordIsEmpty" = "Пароль пусты";
 
 
-"indicator.message.phoneNumberIsEmpty" = "нумар пусты";
+"indicator.message.phoneNumberIsEmpty" = "Нумар пусты";
 
 
-"indicator.message.plsCheckUrEmailForConfirmNewEmail" = "пацвердзіце новы email";
+"indicator.message.plsCheckUrEmailForConfirmNewEmail" = "Пацвердзіце новы email";
 
 
-"indicator.message.postCreatedSuccessfully" = "аб'ява створана";
+"indicator.message.postCreatedSuccessfully" = "Аб'ява створана";
 
 
-"indicator.message.postEditedSuccessfully" = "аб'ява зменена";
+"indicator.message.postEditedSuccessfully" = "Аб'ява зменена";
 
 
-"indicator.message.priceIsEmpty" = "запоўніце кошт";
+"indicator.message.priceIsEmpty" = "Запоўніце кошт";
 
 
-"indicator.message.totalAreaIsEmpt" = "агульная плошча пустая";
+"indicator.message.totalAreaIsEmpt" = "Агульная плошча пустая";
 
 
-"indicator.message.totalNumberOfRoomsIsEmpty" = "поле (усяго покояў) пустое";
+"indicator.message.totalNumberOfRoomsIsEmpty" = "Поле (усяго покояў) пустое";
 
 
-"indicator.message.userDoesntExist" = "карыстальнік не існуе";
+"indicator.message.userDoesntExist" = "Карыстальнік не існуе";
 
 
-"indicator.message.userDoesntHaveEmail" = "карыстальнік ня мае email";
+"indicator.message.userDoesntHaveEmail" = "Карыстальнік ня мае email";
 
 
-"indicator.message.verifyEmail" = "пацвердзіце email";
+"indicator.message.verifyEmail" = "Пацвердзіце email";
 
 
 "indicator.title.emailIsEmpty" = "email пусты";
@@ -135,49 +137,49 @@
 "indicator.title.error" = "Памылка";
 
 
-"indicator.title.passwordIsEmpty" = "пароль пусты";
+"indicator.title.passwordIsEmpty" = "Пароль пусты";
 
 
-"indicator.title.resetPasswordMessageWasSent" = "пароль адпраўлен";
+"indicator.title.resetPasswordMessageWasSent" = "Пароль адпраўлен";
 
 
 "indicator.title.success" = "Паспяхова";
 
 
-"indicator.title.verificationSent" = "пацверджанне адпраўлена";
+"indicator.title.verificationSent" = "Пацверджанне адпраўлена";
 
 
-"label.emptyProfile" = "пусты профіль";
+"label.emptyProfile" = "Пусты профіль";
 
 
-"label.totalNumberOfRooms" = "усяго пакояў";
+"label.totalNumberOfRooms" = "Усяго пакояў";
 
 
-"label.userSetting" = "налады";
+"label.userSetting" = "Налады";
 
 
-"navigationBar.settings" = "налады";
+"navigationBar.settings" = "Налады";
 
 
-"navigationBar.signIn" = "увайсці";
+"navigationBar.signIn" = "Увайсці";
 
 
-"navigationBar.signOut" = "выйсці";
+"navigationBar.signOut" = "Выйсці";
 
 
-"tabBar.add" = "дадаць";
+"tabBar.add" = "Дадаць";
 
 
-"tabBar.profile" = "профіль";
+"tabBar.profile" = "Профіль";
 
 
-"textField.placeholder.typeSomething" = "напішыце %s";
+"textField.placeholder.typeSomething" = "Напішыце што-небудзь";
 
 /*  */
-"words.email" = "";
+"words.email" = " е-пошта";
 
 
-"words.name" = "імя";
+"words.name" = "Імя";
 
 
-"words.password" = "пароль";
+"words.password" = "Пароль";

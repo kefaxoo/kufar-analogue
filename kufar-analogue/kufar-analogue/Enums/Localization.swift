@@ -33,6 +33,8 @@ enum Localization {
             case editPost = "button.title.editPost"
             case deleteAd = "button.title.delete"
             case saveChanges = "button.title.saveChanges"
+            case signIn = "button.title.signIn"
+            case signUp = "button.title.signUp"
         }
     }
     enum ContextualAction {
@@ -87,16 +89,19 @@ enum Localization {
                 case descriptionIsEmpty = "alert.controller.title.descriptionIsEmpty"
                 case photoIsEmpty = "alert.controller.title.photoIsEmpty"
                 case saveChanges = "alert.controller.title.saveChanges"
+                case verificationEmailSent = "alert.controller.title.verificationEmailSent"
             }
             enum Message: String {
                 case createPostWithoutDescription = "alert.controller.message.createPostWithoutDescription"
                 case createPostWithoutPhoto = "alert.contoller.message.createPostWithoutPhoto"
                 case areYouSureToMakeChanges = "alert.controller.message.areYouSureToMakeChanges"
+                case verificationEmailSent = "alert.controller.message.verificationEmailSent"
             }
         }
         enum Action: String {
             case yes = "alert.action.yes"
             case no = "alert.action.no"
+            case ok = "alert.action.ok"
         }
     }
     enum ActionButton: String {
