@@ -21,16 +21,20 @@
 "alert.action.no" = "нет";
 
 
+"alert.action.ok" = "хорошо";
+
+
 "alert.action.yes" = "да";
 
-"alert.action.ok" = "хорошо";
 
 "alert.contoller.message.createPostWithoutPhoto" = "Создать без фото?";
 
 
 "alert.controller.message.createPostWithoutDescription" = "Создать без описания?";
 
+
 "alert.controller.message.verificationEmailSent" = "Подтверждение выслано на почту";
+
 
 "alert.controller.title.descriptionIsEmpty" = "Описание пустое";
 
@@ -39,6 +43,7 @@
 
 
 "alert.controller.title.saveChanges" = "Сохранить изменения";
+
 
 "alert.controller.title.verificationEmailSent" = "Подтверждение e-mail отправлено";
 
@@ -72,7 +77,9 @@
 
 "button.title.saveChanges" = "Сохранить настройки";
 
+
 "button.title.signIn" = "Войти";
+
 
 "button.title.signUp" = "Зарегистрироваться";
 
@@ -179,7 +186,7 @@
 "tabBar.profile" = "Профиль";
 
 
-"textField.placeholder.typeSomething" = "Напишите %s";
+"textField.placeholder.typeSomething" = "Напишите %@";
 
 /*  */
 "words.email" = "Электронная почта";

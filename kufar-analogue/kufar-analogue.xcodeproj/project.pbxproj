@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		700399462A39DBF100B02B01 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700399442A39DBF100B02B01 /* InformationViewController.swift */; };
+		700399472A39DBF100B02B01 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700399452A39DBF100B02B01 /* InformationViewController.xib */; };
 		70096B392A155D1300A0400A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 70096B3B2A155D1300A0400A /* Localizable.strings */; };
 		70096B3E2A155D3700A0400A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70096B3D2A155D3700A0400A /* Bundle.swift */; };
 		70096B402A155D7100A0400A /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70096B3F2A155D7100A0400A /* Localization.swift */; };
@@ -69,13 +71,13 @@
 		70D4570729FD718E0014C3A0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4570629FD718E0014C3A0 /* String.swift */; };
 		70D4570929FD7CB50014C3A0 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4570829FD7CB50014C3A0 /* TypeAliases.swift */; };
 		70F7168429E9DD9300351E76 /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */; };
-		94C837E42A389F08006DCC70 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C837E32A389F08006DCC70 /* InformationViewController.swift */; };
-		94C837E62A389F22006DCC70 /* InformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C837E52A389F22006DCC70 /* InformationViewController.storyboard */; };
 		94C837E82A38A090006DCC70 /* InformationTableViewCells.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C837E72A38A090006DCC70 /* InformationTableViewCells.storyboard */; };
 		94C837EA2A38A0AA006DCC70 /* InformationTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C837E92A38A0AA006DCC70 /* InformationTableViewCells.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		700399442A39DBF100B02B01 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		700399452A39DBF100B02B01 /* InformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 		70096B362A155CE500A0400A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		70096B3A2A155D1300A0400A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		70096B3C2A155D1600A0400A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -114,8 +116,6 @@
 		70F7168329E9DD9300351E76 /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
 		9406EB902A1FCB98003B80DD /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Main.strings; sourceTree = "<group>"; };
 		9406EB912A1FCB98003B80DD /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Localizable.strings; sourceTree = "<group>"; };
-		94C837E32A389F08006DCC70 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
-		94C837E52A389F22006DCC70 /* InformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InformationViewController.storyboard; sourceTree = "<group>"; };
 		94C837E72A38A090006DCC70 /* InformationTableViewCells.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InformationTableViewCells.storyboard; sourceTree = "<group>"; };
 		94C837E92A38A0AA006DCC70 /* InformationTableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,8 +335,8 @@
 		949DA5FD2A3333A800F044CA /* InformationAboutAdViewController */ = {
 			isa = PBXGroup;
 			children = (
-				94C837E32A389F08006DCC70 /* InformationViewController.swift */,
-				94C837E52A389F22006DCC70 /* InformationViewController.storyboard */,
+				700399442A39DBF100B02B01 /* InformationViewController.swift */,
+				700399452A39DBF100B02B01 /* InformationViewController.xib */,
 			);
 			path = InformationAboutAdViewController;
 			sourceTree = "<group>";
@@ -445,12 +445,12 @@
 				706988512A116F7500695ED5 /* PostTableViewCell.xib in Resources */,
 				7016B84C29E9E4730083AC08 /* UserSettingsViewController.xib in Resources */,
 				70096B392A155D1300A0400A /* Localizable.strings in Resources */,
-				94C837E62A389F22006DCC70 /* InformationViewController.storyboard in Resources */,
 				94C837E82A38A090006DCC70 /* InformationTableViewCells.storyboard in Resources */,
 				70A472C929E87F6600315611 /* Assets.xcassets in Resources */,
 				70A472C729E87F6500315611 /* Main.storyboard in Resources */,
 				7028306629EF13370039221E /* AddViewController.xib in Resources */,
 				70A4732629E88E2100315611 /* GoogleService-Info.plist in Resources */,
+				700399472A39DBF100B02B01 /* InformationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C837E42A389F08006DCC70 /* InformationViewController.swift in Sources */,
 				70D4570929FD7CB50014C3A0 /* TypeAliases.swift in Sources */,
 				706988582A11707700695ED5 /* PostModel.swift in Sources */,
 				70096B402A155D7100A0400A /* Localization.swift in Sources */,
@@ -485,6 +484,7 @@
 				70A4732129E8894400315611 /* SignType.swift in Sources */,
 				70A4730F29E8833200315611 /* AgentTabBarController.swift in Sources */,
 				7069885C2A11737E00695ED5 /* UITableViewCell.swift in Sources */,
+				700399462A39DBF100B02B01 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

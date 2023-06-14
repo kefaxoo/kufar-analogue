@@ -20,23 +20,33 @@
 
 "alert.action.no" = "Не";
 
-"alert.action.yes" = "Так";
 
 "alert.action.ok" = "Добра";
 
+
+"alert.action.yes" = "Так";
+
+
 "alert.contoller.message.createPostWithoutPhoto" = "Стварыць без фота?";
+
 
 "alert.controller.message.createPostWithoutDescription" = "Стварыць без апісання?";
 
+
 "alert.controller.message.verificationEmailSent" = "Пацверджанне адаслана на пошту";
+
 
 "alert.controller.title.descriptionIsEmpty" = "Апісанне пустое";
 
+
 "alert.controller.title.photoIsEmpty" = "Няма фота";
+
 
 "alert.controller.title.saveChanges" = "Захаваць змены";
 
+
 "alert.controller.title.verificationEmailSent" = "Пацверджанне e-mail адпраўлена";
+
 
 "button.menu.action.combinedBathroom" = "Сумешчаны";
 
@@ -67,9 +77,12 @@
 
 "button.title.saveChanges" = "Захаваць налады";
 
+
 "button.title.signIn" = "Увайсцi";
 
+
 "button.title.signUp" = "Зарэгiстрырацца";
+
 
 "contexAction.edit" = "Рэдагаваць";
 
@@ -173,7 +186,7 @@
 "tabBar.profile" = "Профіль";
 
 
-"textField.placeholder.typeSomething" = "Напішыце што-небудзь";
+"textField.placeholder.typeSomething" = "Напішыце %@";
 
 /*  */
 "words.email" = " е-пошта";
